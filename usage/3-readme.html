@@ -1,0 +1,1206 @@
+<!doctype html>
+<html class="no-js" lang="es">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Búsqueda" href="../search.html" /><link rel="next" title="OPENSHIFT" href="4-readme.html" /><link rel="prev" title="ISTIO" href="2-readme.html" />
+
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>KUBERNETES - documentación de DOCKER, KUBERNETES, OPENSHIFT, ISTIO -</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">documentación de DOCKER, KUBERNETES, OPENSHIFT, ISTIO - </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">documentación de DOCKER, KUBERNETES, OPENSHIFT, ISTIO - </span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Búsqueda name="q" aria-label="Búsqueda">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1-readme.html">DOCKER, KUBERNETES, OPENSHIFT, ISTIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-readme.html#docker">DOCKER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-readme.html">ISTIO</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">KUBERNETES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-readme.html">OPENSHIFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-readme.html">Docker-compose y Docker Swarm</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="kubernetes">
+<h1>KUBERNETES<a class="headerlink" href="#kubernetes" title="Enlazar permanentemente con este título">¶</a></h1>
+<section id="instalacion-de-minikube">
+<h2>Instalación de minikube<a class="headerlink" href="#instalacion-de-minikube" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="habilitar-hyper-v-en-windows-10">
+<h3>Habilitar Hyper-V en windows 10<a class="headerlink" href="#habilitar-hyper-v-en-windows-10" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Enable</span><span class="o">-</span><span class="n">WindowsOptionalFeature</span> <span class="o">-</span><span class="n">Online</span> <span class="o">-</span><span class="n">FeatureName</span> <span class="n">Microsoft</span><span class="o">-</span><span class="n">Hyper</span><span class="o">-</span><span class="n">V</span> <span class="o">-</span><span class="n">All</span>
+</pre></div>
+</div>
+</section>
+<section id="arrancar-minikube">
+<h3>Arrancar minikube<a class="headerlink" href="#arrancar-minikube" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Debe estar creado con el Administrador de Hyper-V el conmutador virtual
+VM-External-Switch como external a la red del equipo (eth0 o wlan)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minikube</span> <span class="n">start</span> <span class="o">--</span><span class="n">vm</span><span class="o">-</span><span class="n">driver</span> <span class="s2">"hyperv"</span> <span class="o">--</span><span class="n">hyperv</span><span class="o">-</span><span class="n">virtual</span><span class="o">-</span><span class="n">switch</span> <span class="s2">"VM-External-Switch"</span> <span class="o">--</span><span class="n">memory</span> <span class="mi">4096</span><span class="n">m</span>
+</pre></div>
+</div>
+</section>
+<section id="si-hubiese-algun-problema">
+<h3>Si hubiese algún problema:<a class="headerlink" href="#si-hubiese-algun-problema" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>Minikube delete</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minikube</span> <span class="n">delete</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Borrar carpetas de configuración</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">usuario</span>\<span class="o">.</span><span class="n">kube</span>
+<span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">usuario</span>\<span class="o">.</span><span class="n">minikube</span>
+</pre></div>
+</div>
+<p>Volver a arrancar minikube</p>
+</section>
+<section id="asignar-el-environment-de-docker-a-minikube">
+<h3>Asignar el environment de docker a minikube<a class="headerlink" href="#asignar-el-environment-de-docker-a-minikube" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">minikube</span> <span class="n">docker</span><span class="o">-</span><span class="n">env</span> <span class="o">|</span> <span class="n">Invoke</span><span class="o">-</span><span class="n">Expression</span>
+</pre></div>
+</div>
+</section>
+<section id="parar-minikube">
+<h3>Parar minikube<a class="headerlink" href="#parar-minikube" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; minikube ssh
+$sudo poweroff
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pods">
+<h2>PODS<a class="headerlink" href="#pods" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="crear-un-pod">
+<h3>Crear un pod<a class="headerlink" href="#crear-un-pod" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">run</span> <span class="o">--</span><span class="n">generator</span><span class="o">=</span><span class="n">run</span><span class="o">-</span><span class="n">pod</span><span class="o">/</span><span class="n">v1</span> <span class="n">podtest</span> <span class="o">--</span><span class="n">image</span><span class="o">=</span><span class="n">nginx</span><span class="p">:</span><span class="n">alpine</span>
+</pre></div>
+</div>
+</section>
+<section id="listar-pods">
+<h3>Listar pods<a class="headerlink" href="#listar-pods" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span>
+<span class="n">NAME</span>      <span class="n">READY</span>   <span class="n">STATUS</span>    <span class="n">RESTARTS</span>   <span class="n">AGE</span>
+<span class="n">podtest</span>   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>   <span class="mi">0</span>          <span class="mi">23</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>READY 1 contenedor de 1 contenedor esperado, esta la estrategia más
+utilizada un contenedor por pod ### Ver logs del pod</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">describe</span> <span class="n">pod</span> <span class="n">podtest</span>
+<span class="n">Name</span><span class="p">:</span>         <span class="n">podtest</span>
+<span class="n">Namespace</span><span class="p">:</span>    <span class="n">default</span>
+<span class="n">Priority</span><span class="p">:</span>     <span class="mi">0</span>
+<span class="n">Node</span><span class="p">:</span>         <span class="n">minikube</span><span class="o">/</span><span class="mf">172.17.107.109</span>
+<span class="n">Start</span> <span class="n">Time</span><span class="p">:</span>   <span class="n">Tue</span><span class="p">,</span> <span class="mi">11</span> <span class="n">Feb</span> <span class="mi">2020</span> <span class="mi">16</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">07</span> <span class="o">+</span><span class="mi">0100</span>
+<span class="n">Labels</span><span class="p">:</span>       <span class="n">run</span><span class="o">=</span><span class="n">podtest</span>
+<span class="n">Annotations</span><span class="p">:</span>  <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="n">Status</span><span class="p">:</span>       <span class="n">Running</span>
+<span class="n">IP</span><span class="p">:</span>           <span class="mf">172.18.0.4</span>
+<span class="n">IPs</span><span class="p">:</span>
+  <span class="n">IP</span><span class="p">:</span>  <span class="mf">172.18.0.4</span>
+<span class="n">Containers</span><span class="p">:</span>
+  <span class="n">podtest</span><span class="p">:</span> <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="eliminar-pod">
+<h3>Eliminar pod<a class="headerlink" href="#eliminar-pod" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">delete</span> <span class="n">pod</span> <span class="n">nombre</span>
+</pre></div>
+</div>
+</section>
+<section id="informacion-del-pod-con-salida-yaml">
+<h3>Información del pod con salida yaml<a class="headerlink" href="#informacion-del-pod-con-salida-yaml" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">get</span> <span class="n">pod</span> <span class="n">podtest</span> <span class="o">-</span><span class="n">o</span> <span class="n">yaml</span>
+<span class="n">apiVersion</span><span class="p">:</span> <span class="n">v1</span>
+<span class="n">kind</span><span class="p">:</span> <span class="n">Pod</span>
+<span class="n">metadata</span><span class="p">:</span>
+  <span class="n">creationTimestamp</span><span class="p">:</span> <span class="s2">"2020-02-11T15:08:06Z"</span>
+  <span class="n">labels</span><span class="p">:</span>
+    <span class="n">run</span><span class="p">:</span> <span class="n">podtest</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">podtest</span>
+  <span class="n">namespace</span><span class="p">:</span> <span class="n">default</span>
+  <span class="n">resourceVersion</span><span class="p">:</span> <span class="s2">"6180"</span>
+  <span class="n">selfLink</span><span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">namespaces</span><span class="o">/</span><span class="n">default</span><span class="o">/</span><span class="n">pods</span><span class="o">/</span><span class="n">podtest</span>
+  <span class="n">uid</span><span class="p">:</span> <span class="mi">2</span><span class="n">d730bf6</span><span class="o">-</span><span class="n">f22c</span><span class="o">-</span><span class="mi">4</span><span class="n">be9</span><span class="o">-</span><span class="mi">8</span><span class="n">a66</span><span class="o">-</span><span class="mi">3</span><span class="n">c75207652c4</span>
+</pre></div>
+</div>
+</section>
+<section id="ver-los-logs">
+<h3>Ver los logs<a class="headerlink" href="#ver-los-logs" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">logs</span> <span class="n">podtest</span>
+<span class="mf">172.18.0.1</span> <span class="o">-</span> <span class="o">-</span> <span class="p">[</span><span class="mi">11</span><span class="o">/</span><span class="n">Feb</span><span class="o">/</span><span class="mi">2020</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span><span class="mi">10</span> <span class="o">+</span><span class="mi">0000</span><span class="p">]</span> <span class="s2">"GET / HTTP/1.1"</span> <span class="mi">200</span> <span class="mi">612</span> <span class="s2">"-"</span> <span class="s2">"curl/7.66.0"</span> <span class="s2">"-"</span>
+<span class="mf">172.18.0.1</span> <span class="o">-</span> <span class="o">-</span> <span class="p">[</span><span class="mi">11</span><span class="o">/</span><span class="n">Feb</span><span class="o">/</span><span class="mi">2020</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mi">15</span> <span class="o">+</span><span class="mi">0000</span><span class="p">]</span> <span class="s2">"GET / HTTP/1.1"</span> <span class="mi">200</span> <span class="mi">612</span> <span class="s2">"-"</span> <span class="s2">"curl/7.66.0"</span> <span class="s2">"-"</span>
+<span class="mf">172.18.0.1</span> <span class="o">-</span> <span class="o">-</span> <span class="p">[</span><span class="mi">11</span><span class="o">/</span><span class="n">Feb</span><span class="o">/</span><span class="mi">2020</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mi">41</span> <span class="o">+</span><span class="mi">0000</span><span class="p">]</span> <span class="s2">"GET / HTTP/1.1"</span> <span class="mi">200</span> <span class="mi">612</span> <span class="s2">"-"</span> <span class="s2">"curl/7.66.0"</span> <span class="s2">"-"</span>
+<span class="mf">172.18.0.1</span> <span class="o">-</span> <span class="o">-</span> <span class="p">[</span><span class="mi">11</span><span class="o">/</span><span class="n">Feb</span><span class="o">/</span><span class="mi">2020</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">40</span> <span class="o">+</span><span class="mi">0000</span><span class="p">]</span> <span class="s2">"GET / HTTP/1.1"</span> <span class="mi">200</span> <span class="mi">3</span> <span class="s2">"-"</span> <span class="s2">"curl/7.66.0"</span> <span class="s2">"-"</span>
+</pre></div>
+</div>
+</section>
+<section id="ver-los-contenedores">
+<h3>Ver los contenedores<a class="headerlink" href="#ver-los-contenedores" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker ps -f name=podtest
+</pre></div>
+</div>
+</section>
+<section id="ejecutar-pod-y-entrar-al-ssh">
+<h3>Ejecutar pod y entrar al ssh<a class="headerlink" href="#ejecutar-pod-y-entrar-al-ssh" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kubectl exec -ti podtest -- sh
+/ #
+</pre></div>
+</div>
+</section>
+<section id="para-entrar-a-la-imagen-de-minikube">
+<h3>Para entrar a la imagen de minikube<a class="headerlink" href="#para-entrar-a-la-imagen-de-minikube" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ minikube ssh
+</pre></div>
+</div>
+</section>
+<section id="versiones-del-api-para-manifiestos-yaml">
+<h3>Versiones del api para manifiestos yaml<a class="headerlink" href="#versiones-del-api-para-manifiestos-yaml" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">api</span><span class="o">-</span><span class="n">versions</span>
+</pre></div>
+</div>
+</section>
+<section id="recursos-para-manifiestos-yaml-en-este-caso-relacionados-con-pods">
+<h3>Recursos para manifiestos yaml, en este caso relacionados con pods<a class="headerlink" href="#recursos-para-manifiestos-yaml-en-este-caso-relacionados-con-pods" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">api</span><span class="o">-</span><span class="n">resources</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">Pod</span>
+<span class="n">pods</span>                              <span class="n">po</span>                                          <span class="n">true</span>         <span class="n">Pod</span>
+<span class="n">podtemplates</span>                                                                  <span class="n">true</span>         <span class="n">PodTemplate</span>
+<span class="n">horizontalpodautoscalers</span>          <span class="n">hpa</span>          <span class="n">autoscaling</span>                    <span class="n">true</span>         <span class="n">HorizontalPodAutoscaler</span>
+<span class="n">poddisruptionbudgets</span>              <span class="n">pdb</span>          <span class="n">policy</span>                         <span class="n">true</span>         <span class="n">PodDisruptionBudget</span>
+<span class="n">podsecuritypolicies</span>               <span class="n">psp</span>          <span class="n">policy</span>                         <span class="n">false</span>        <span class="n">PodSecurityPolicy</span>
+</pre></div>
+</div>
+</section>
+<section id="aplicar-manifiesto-yaml-para-crear-objeto">
+<h3>Aplicar manifiesto yaml para crear objeto<a class="headerlink" href="#aplicar-manifiesto-yaml-para-crear-objeto" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="n">pod</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">pod</span><span class="o">/</span><span class="n">podtest2</span> <span class="n">created</span>
+</pre></div>
+</div>
+</section>
+<section id="eliminar-en-base-a-manifiesto">
+<h3>Eliminar en base a manifiesto<a class="headerlink" href="#eliminar-en-base-a-manifiesto" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">delete</span> <span class="o">-</span><span class="n">f</span> <span class="n">pod</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+</section>
+<section id="lista-de-pods-informa-ip-y-status">
+<h3>Lista de pods, informa IP y STATUS<a class="headerlink" href="#lista-de-pods-informa-ip-y-status" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span> <span class="o">-</span><span class="n">o</span><span class="o">=</span><span class="n">custom</span><span class="o">-</span><span class="n">columns</span><span class="o">=</span><span class="n">NAME</span><span class="p">:</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="n">IP</span><span class="p">:</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">podIP</span>
+</pre></div>
+</div>
+</section>
+<section id="logs-de-un-contenedor">
+<h3>Logs de un contenedor<a class="headerlink" href="#logs-de-un-contenedor" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">logs</span> <span class="n">doscont</span> <span class="o">-</span><span class="n">c</span> <span class="n">cont1</span>
+</pre></div>
+</div>
+</section>
+<section id="comprobar-contenedor">
+<h3>Comprobar contenedor<a class="headerlink" href="#comprobar-contenedor" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">exec</span> <span class="o">-</span><span class="n">ti</span> <span class="n">doscont</span> <span class="o">--</span> <span class="n">sh</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="labels">
+<h2>Labels<a class="headerlink" href="#labels" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="labels-metadata-en-manifiestos">
+<h3>Labels metadata en manifiestos<a class="headerlink" href="#labels-metadata-en-manifiestos" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span> <span class="o">-</span><span class="n">l</span> <span class="n">app</span><span class="o">=</span><span class="n">backend</span>
+<span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span> <span class="o">-</span><span class="n">l</span> <span class="n">app</span><span class="o">=</span><span class="n">frontend</span>
+<span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span> <span class="o">-</span><span class="n">l</span> <span class="n">env</span><span class="o">=</span><span class="n">dev</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="replicasets">
+<h2>REPLICASETS<a class="headerlink" href="#replicasets" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Está a un nivel más alto del Pod, se le puede indicar cuantas replicas
+del Pod se necesitan. Los Pods tienen que estar etiquetados, para que el
+replicaset sepa los pods que tiene que mantener replicados.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">get</span> <span class="n">rs</span> <span class="n">rs</span><span class="o">-</span><span class="n">test</span> <span class="o">-</span><span class="n">o</span> <span class="n">yaml</span>
+<span class="n">kubectl</span> <span class="n">run</span> <span class="o">--</span><span class="n">generator</span><span class="o">=</span><span class="n">run</span><span class="o">-</span><span class="n">pod</span><span class="o">/</span><span class="n">v1</span> <span class="n">podtest1</span> <span class="o">--</span><span class="n">image</span><span class="o">=</span><span class="n">nginx</span><span class="p">:</span><span class="n">alpine</span>
+<span class="n">kubectl</span> <span class="n">run</span> <span class="o">--</span><span class="n">generator</span><span class="o">=</span><span class="n">run</span><span class="o">-</span><span class="n">pod</span><span class="o">/</span><span class="n">v1</span> <span class="n">podtest2</span> <span class="o">--</span><span class="n">image</span><span class="o">=</span><span class="n">nginx</span><span class="p">:</span><span class="n">alpine</span>
+</pre></div>
+</div>
+<p>Incluir label al pod que esta corriendo (kubectl label pods)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubectl</span> <span class="n">label</span> <span class="n">pods</span> <span class="n">podtest1</span> <span class="n">app</span><span class="o">=</span><span class="n">pop</span><span class="o">-</span><span class="n">label</span>
+</pre></div>
+</div>
+</section>
+<section id="deployments">
+<h2>DEPLOYMENTS<a class="headerlink" href="#deployments" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La gestión de los replicaset para actualizaciones de versión directa,
+los deployments son un objeto de alto nivel que se hace cargo de los
+replicaset.</p>
+<ul class="simple">
+<li><p>Maxv porcentaje de replicaset que pueden caer (disponibilidad)</p></li>
+<li><p>Maxs porcentaje de escalado</p></li>
+</ul>
+<p>Los replicasets se quedan en el historico despues de la actualización,
+por defecto máximo 10 revisionHistoryLimit</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">rs</span> <span class="o">-</span><span class="n">l</span> <span class="n">app</span><span class="o">=</span><span class="n">front</span>
+<span class="n">NAME</span>                         <span class="n">DESIRED</span>   <span class="n">CURRENT</span>   <span class="n">READY</span>   <span class="n">AGE</span>
+<span class="n">deployment</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="mi">84467</span><span class="n">d95b6</span>   <span class="mi">0</span>         <span class="mi">0</span>         <span class="mi">0</span>       <span class="mi">5</span><span class="n">m28s</span>
+<span class="n">deployment</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="mi">86677</span><span class="n">fd487</span>   <span class="mi">3</span>         <span class="mi">3</span>         <span class="mi">3</span>       <span class="mi">22</span><span class="n">m</span>
+</pre></div>
+</div>
+<section id="utilizar-change-cause">
+<h3>Utilizar CHANGE-CAUSE<a class="headerlink" href="#utilizar-change-cause" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span>\<span class="n">dev</span><span class="o">.</span><span class="n">yaml</span> <span class="o">--</span><span class="n">record</span>
+<span class="n">deployment</span><span class="o">.</span><span class="n">apps</span><span class="o">/</span><span class="n">deployment</span><span class="o">-</span><span class="n">test</span> <span class="n">configured</span>
+
+<span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">rollout</span> <span class="n">history</span> <span class="n">deployment</span> <span class="n">deployment</span><span class="o">-</span><span class="n">test</span>
+<span class="n">deployment</span><span class="o">.</span><span class="n">apps</span><span class="o">/</span><span class="n">deployment</span><span class="o">-</span><span class="n">test</span>
+<span class="n">REVISION</span>  <span class="n">CHANGE</span><span class="o">-</span><span class="n">CAUSE</span>
+<span class="mi">1</span>         <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="mi">2</span>         <span class="n">kubectl</span><span class="o">.</span><span class="n">exe</span> <span class="n">apply</span> <span class="o">--</span><span class="n">filename</span><span class="o">=.</span>\<span class="n">dev</span><span class="o">.</span><span class="n">yaml</span> <span class="o">--</span><span class="n">record</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Si incluimos metadata:</div>
+<div class="line">annotations: kubernetes.io/change-cause: “Cambio de puerto 90”</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">rollout</span> <span class="n">history</span> <span class="n">deployment</span> <span class="n">deployment</span><span class="o">-</span><span class="n">test</span>
+<span class="n">deployment</span><span class="o">.</span><span class="n">apps</span><span class="o">/</span><span class="n">deployment</span><span class="o">-</span><span class="n">test</span>
+<span class="n">REVISION</span>  <span class="n">CHANGE</span><span class="o">-</span><span class="n">CAUSE</span>
+<span class="mi">2</span>         <span class="n">kubectl</span><span class="o">.</span><span class="n">exe</span> <span class="n">apply</span> <span class="o">--</span><span class="n">filename</span><span class="o">=.</span>\<span class="n">dev</span><span class="o">.</span><span class="n">yaml</span> <span class="o">--</span><span class="n">record</span><span class="o">=</span><span class="n">true</span>
+<span class="mi">3</span>         <span class="n">Cambio</span> <span class="n">de</span> <span class="n">puerto</span> <span class="mi">90</span>
+</pre></div>
+</div>
+<p>Para ver los cambios</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">rollout</span> <span class="n">history</span> <span class="n">deployment</span> <span class="n">deployment</span><span class="o">-</span><span class="n">test</span> <span class="o">--</span><span class="n">revision</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">deployment</span><span class="o">.</span><span class="n">apps</span><span class="o">/</span><span class="n">deployment</span><span class="o">-</span><span class="n">test</span> <span class="k">with</span> <span class="n">revision</span> <span class="c1">#3</span>
+<span class="n">Pod</span> <span class="n">Template</span><span class="p">:</span>
+  <span class="n">Labels</span><span class="p">:</span>       <span class="n">app</span><span class="o">=</span><span class="n">front</span>
+        <span class="n">pod</span><span class="o">-</span><span class="n">template</span><span class="o">-</span><span class="nb">hash</span><span class="o">=</span><span class="mi">7995</span><span class="n">b9c4f7</span>
+  <span class="n">Annotations</span><span class="p">:</span>  <span class="n">kubernetes</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">change</span><span class="o">-</span><span class="n">cause</span><span class="p">:</span> <span class="n">Cambio</span> <span class="n">de</span> <span class="n">puerto</span> <span class="mi">90</span>
+  <span class="n">Containers</span><span class="p">:</span>
+   <span class="n">nginx</span><span class="p">:</span>
+    <span class="n">Image</span><span class="p">:</span>      <span class="n">nginx</span><span class="p">:</span><span class="n">alpine</span>
+    <span class="n">Port</span><span class="p">:</span>       <span class="mi">90</span><span class="o">/</span><span class="n">TCP</span>
+    <span class="n">Host</span> <span class="n">Port</span><span class="p">:</span>  <span class="mi">0</span><span class="o">/</span><span class="n">TCP</span>
+    <span class="n">Environment</span><span class="p">:</span>        <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+    <span class="n">Mounts</span><span class="p">:</span>     <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+  <span class="n">Volumes</span><span class="p">:</span>      <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="utilizar-rollback-para-marcha-atras-de-despliegue">
+<h3>Utilizar ROLLBACK para marcha atrás de despliegue<a class="headerlink" href="#utilizar-rollback-para-marcha-atras-de-despliegue" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">rollout</span> <span class="n">history</span> <span class="n">deployment</span> <span class="n">deployment</span><span class="o">-</span><span class="n">test</span>
+<span class="n">deployment</span><span class="o">.</span><span class="n">apps</span><span class="o">/</span><span class="n">deployment</span><span class="o">-</span><span class="n">test</span>
+<span class="n">REVISION</span>  <span class="n">CHANGE</span><span class="o">-</span><span class="n">CAUSE</span>
+<span class="mi">2</span>         <span class="n">kubectl</span><span class="o">.</span><span class="n">exe</span> <span class="n">apply</span> <span class="o">--</span><span class="n">filename</span><span class="o">=.</span>\<span class="n">dev</span><span class="o">.</span><span class="n">yaml</span> <span class="o">--</span><span class="n">record</span><span class="o">=</span><span class="n">true</span>
+<span class="mi">3</span>         <span class="n">Cambio</span> <span class="n">de</span> <span class="n">puerto</span> <span class="mi">90</span>
+<span class="mi">4</span>         <span class="n">Cambio</span> <span class="n">de</span> <span class="n">puerto</span> <span class="mi">90</span>
+<span class="mi">5</span>         <span class="n">Despliegue</span> <span class="n">mal</span> <span class="n">configurado</span> <span class="n">por</span> <span class="n">imagen</span>
+
+<span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span>
+<span class="n">NAME</span>                               <span class="n">READY</span>   <span class="n">STATUS</span>              <span class="n">RESTARTS</span>   <span class="n">AGE</span>
+<span class="n">deployment</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="mi">7995</span><span class="n">b9c4f7</span><span class="o">-</span><span class="mi">4</span><span class="n">lzsf</span>   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>             <span class="mi">0</span>          <span class="mi">6</span><span class="n">m54s</span>
+<span class="n">deployment</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="mi">7995</span><span class="n">b9c4f7</span><span class="o">-</span><span class="n">j2grb</span>   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>             <span class="mi">0</span>          <span class="mi">7</span><span class="n">m3s</span>
+<span class="n">deployment</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="mi">7995</span><span class="n">b9c4f7</span><span class="o">-</span><span class="n">jdjl5</span>   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>             <span class="mi">0</span>          <span class="mi">7</span><span class="n">m10s</span>
+<span class="n">deployment</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">ccf97ff6c</span><span class="o">-</span><span class="n">nbmqr</span>    <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="n">ContainerCreating</span>   <span class="mi">0</span>          <span class="mi">8</span><span class="n">s</span>
+
+<span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">rollout</span> <span class="n">undo</span> <span class="n">deployment</span> <span class="n">deployment</span><span class="o">-</span><span class="n">test</span> <span class="o">--</span><span class="n">to</span><span class="o">-</span><span class="n">revision</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">deployment</span><span class="o">.</span><span class="n">apps</span><span class="o">/</span><span class="n">deployment</span><span class="o">-</span><span class="n">test</span> <span class="n">rolled</span> <span class="n">back</span>
+
+<span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">rollout</span> <span class="n">status</span> <span class="n">deployment</span> <span class="n">deployment</span><span class="o">-</span><span class="n">test</span>
+<span class="n">deployment</span> <span class="s2">"deployment-test"</span> <span class="n">successfully</span> <span class="n">rolled</span> <span class="n">out</span>
+
+<span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">rollout</span> <span class="n">history</span> <span class="n">deployment</span> <span class="n">deployment</span><span class="o">-</span><span class="n">test</span>
+<span class="n">deployment</span><span class="o">.</span><span class="n">apps</span><span class="o">/</span><span class="n">deployment</span><span class="o">-</span><span class="n">test</span>
+<span class="n">REVISION</span>  <span class="n">CHANGE</span><span class="o">-</span><span class="n">CAUSE</span>
+<span class="mi">2</span>         <span class="n">kubectl</span><span class="o">.</span><span class="n">exe</span> <span class="n">apply</span> <span class="o">--</span><span class="n">filename</span><span class="o">=.</span>\<span class="n">dev</span><span class="o">.</span><span class="n">yaml</span> <span class="o">--</span><span class="n">record</span><span class="o">=</span><span class="n">true</span>
+<span class="mi">4</span>         <span class="n">Cambio</span> <span class="n">de</span> <span class="n">puerto</span> <span class="mi">90</span>
+<span class="mi">5</span>         <span class="n">Despliegue</span> <span class="n">mal</span> <span class="n">configurado</span> <span class="n">por</span> <span class="n">imagen</span>
+<span class="mi">6</span>         <span class="n">Cambio</span> <span class="n">de</span> <span class="n">puerto</span> <span class="mi">90</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="services">
+<h2>SERVICES<a class="headerlink" href="#services" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Es un objeto aislado que observa los pods con un label configurado, el
+servicio mantendrá una IP única para realizar entre otras cosas consulta
+de estado a los pods. Además el servicio hace balanceo de carga
+realizando peticiones en principio con aplicando round-robin. Esto lo
+hará independientemente de que el pod esté incluido en un replicaset.</p>
+<p>Lo realiza independientemente de que los pods caigan y se levanten con
+la probabilidad de que cambie la IP de este. Los servicios realizan esto
+utilizando ENDPOINTS ya que mapea las IPS con los labels.</p>
+<p>La diferencia fundamental entre un deployment y un service está en su
+funcionalidad. El servicio permite el acceso a la red a un conjunto de
+Pods (actuando como un proxy). El Deployment se utiliza para mantener un
+conjunto de Pods en ejecución mediante la creación de Pods a partir de
+una plantilla.</p>
+<p>Los tipos de servicio son: ClusterIP, NodePort y LoadBalancer</p>
+<p><strong>ClusterIP</strong> : Expone el servicio en una IP interna del clúster. La
+elección de este valor hace que el servicio solo sea accesible desde
+dentro del clúster. Este es el tipo de servicio predeterminado</p>
+<p><strong>NodePort</strong> : Expone el servicio en la IP de cada Nodo en un puerto
+estático (el NodePort). Se crea automáticamente un servicio ClusterIP,
+al que se enrutará el servicio NodePort. Podrá contactar con el servicio
+NodePort, desde fuera del clúster, solicitando :.</p>
+<p><strong>LoadBalancer</strong> : Expone el servicio externamente usando el balanceador
+de carga de un proveedor de la nube. Los servicios NodePort y ClusterIP,
+a los que se enrutará el equilibrador de carga externo, se crean
+automáticamente.</p>
+<p>Al utilizar NodePort abrimos un puerto específico en todos los hosts y
+se reenvía el tráfico directamente al servicio, y a los Pods.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">svc</span>
+<span class="n">NAME</span>         <span class="n">TYPE</span>        <span class="n">CLUSTER</span><span class="o">-</span><span class="n">IP</span>    <span class="n">EXTERNAL</span><span class="o">-</span><span class="n">IP</span>   <span class="n">PORT</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>    <span class="n">AGE</span>
+<span class="n">kubernetes</span>   <span class="n">ClusterIP</span>   <span class="mf">10.96.0.1</span>     <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>        <span class="mi">443</span><span class="o">/</span><span class="n">TCP</span>    <span class="mi">21</span><span class="n">h</span>
+<span class="n">my</span><span class="o">-</span><span class="n">service</span>   <span class="n">ClusterIP</span>   <span class="mf">10.98.183.0</span>   <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>        <span class="mi">8080</span><span class="o">/</span><span class="n">TCP</span>   <span class="mi">5</span><span class="n">m49s</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">describe</span> <span class="n">svc</span> <span class="n">my</span><span class="o">-</span><span class="n">service</span>
+<span class="n">Name</span><span class="p">:</span>              <span class="n">my</span><span class="o">-</span><span class="n">service</span>
+<span class="n">Namespace</span><span class="p">:</span>         <span class="n">default</span>
+<span class="n">Labels</span><span class="p">:</span>            <span class="n">app</span><span class="o">=</span><span class="n">front</span>
+<span class="n">Annotations</span><span class="p">:</span>       <span class="n">kubectl</span><span class="o">.</span><span class="n">kubernetes</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">last</span><span class="o">-</span><span class="n">applied</span><span class="o">-</span><span class="n">configuration</span><span class="p">:</span>
+                     <span class="p">{</span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="s2">"v1"</span><span class="p">,</span><span class="s2">"kind"</span><span class="p">:</span><span class="s2">"Service"</span><span class="p">,</span><span class="s2">"metadata"</span><span class="p">:{</span><span class="s2">"annotations"</span><span class="p">:{},</span><span class="s2">"labels"</span><span class="p">:{</span><span class="s2">"app"</span><span class="p">:</span><span class="s2">"front"</span><span class="p">},</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"my-service"</span><span class="p">,</span><span class="s2">"namespace"</span><span class="p">:</span><span class="s2">"default"</span><span class="p">},</span><span class="s2">"spec...</span>
+<span class="n">Selector</span><span class="p">:</span>          <span class="n">app</span><span class="o">=</span><span class="n">front</span>
+<span class="n">Type</span><span class="p">:</span>              <span class="n">ClusterIP</span>
+<span class="n">IP</span><span class="p">:</span>                <span class="mf">10.98.183.0</span>
+<span class="n">Port</span><span class="p">:</span>              <span class="o">&lt;</span><span class="n">unset</span><span class="o">&gt;</span>  <span class="mi">8080</span><span class="o">/</span><span class="n">TCP</span>
+<span class="n">TargetPort</span><span class="p">:</span>        <span class="mi">80</span><span class="o">/</span><span class="n">TCP</span>
+<span class="n">Endpoints</span><span class="p">:</span>         <span class="mf">172.18.0.4</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span><span class="mf">172.18.0.7</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span><span class="mf">172.18.0.8</span><span class="p">:</span><span class="mi">80</span>
+<span class="n">Session</span> <span class="n">Affinity</span><span class="p">:</span>  <span class="kc">None</span>
+<span class="n">Events</span><span class="p">:</span>            <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="ver-endpoints">
+<h2>Ver endpoints<a class="headerlink" href="#ver-endpoints" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">endpoints</span>
+<span class="n">NAME</span>         <span class="n">ENDPOINTS</span>                                   <span class="n">AGE</span>
+<span class="n">kubernetes</span>   <span class="mf">172.17.107.109</span><span class="p">:</span><span class="mi">8443</span>                         <span class="mi">21</span><span class="n">h</span>
+<span class="n">my</span><span class="o">-</span><span class="n">service</span>   <span class="mf">172.18.0.4</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span><span class="mf">172.18.0.7</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span><span class="mf">172.18.0.8</span><span class="p">:</span><span class="mi">80</span>   <span class="mi">11</span><span class="n">m</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span> <span class="o">-</span><span class="n">l</span> <span class="n">app</span><span class="o">=</span><span class="n">front</span> <span class="o">-</span><span class="n">o</span> <span class="n">wide</span>
+<span class="n">NAME</span>                               <span class="n">READY</span>   <span class="n">STATUS</span>    <span class="n">RESTARTS</span>   <span class="n">AGE</span>   <span class="n">IP</span>           <span class="n">NODE</span>       <span class="n">NOMINATED</span> <span class="n">NODE</span>   <span class="n">READINESS</span> <span class="n">GATES</span>
+<span class="n">deployment</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="mi">86677</span><span class="n">fd487</span><span class="o">-</span><span class="mi">8</span><span class="n">ms9j</span>   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>   <span class="mi">0</span>          <span class="mi">11</span><span class="n">m</span>   <span class="mf">172.18.0.8</span>   <span class="n">minikube</span>   <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>           <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="n">deployment</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="mi">86677</span><span class="n">fd487</span><span class="o">-</span><span class="mi">9</span><span class="n">zbxt</span>   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>   <span class="mi">0</span>          <span class="mi">11</span><span class="n">m</span>   <span class="mf">172.18.0.4</span>   <span class="n">minikube</span>   <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>           <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="n">deployment</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="mi">86677</span><span class="n">fd487</span><span class="o">-</span><span class="n">bwxgx</span>   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>   <span class="mi">0</span>          <span class="mi">11</span><span class="n">m</span>   <span class="mf">172.18.0.7</span>   <span class="n">minikube</span>   <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>           <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<section id="buscar-propiedades-del-deployment">
+<h3>Buscar propiedades del deployment<a class="headerlink" href="#buscar-propiedades-del-deployment" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">deployments</span> <span class="n">backend</span><span class="o">-</span><span class="n">k8s</span><span class="o">-</span><span class="n">hands</span><span class="o">-</span><span class="n">on</span> <span class="o">-</span><span class="n">o</span> <span class="n">yaml</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="n">PullPolicy</span>
+</pre></div>
+</div>
+</section>
+<section id="imagen-temporal-cuando-se-sale-del-ssh-se-elimina-validacion-de-otros-pods">
+<h3>Imagen temporal cuando se sale del ssh se elimina, validación de otros pods<a class="headerlink" href="#imagen-temporal-cuando-se-sale-del-ssh-se-elimina-validacion-de-otros-pods" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="o">-</span><span class="n">ti</span> <span class="o">--</span><span class="n">generator</span><span class="o">=</span><span class="n">run</span><span class="o">-</span><span class="n">pod</span><span class="o">/</span><span class="n">v1</span> <span class="n">podtest3</span> <span class="o">--</span><span class="n">image</span><span class="o">=</span><span class="n">nginx</span><span class="p">:</span><span class="n">alpine</span> <span class="o">--</span> <span class="n">sh</span>
+</pre></div>
+</div>
+</section>
+<section id="namespaces">
+<h3>NAMESPACES<a class="headerlink" href="#namespaces" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">namespaces</span>
+<span class="n">NAME</span>              <span class="n">STATUS</span>   <span class="n">AGE</span>
+<span class="n">default</span>           <span class="n">Active</span>   <span class="mi">39</span><span class="n">h</span>
+<span class="n">kube</span><span class="o">-</span><span class="n">node</span><span class="o">-</span><span class="n">lease</span>   <span class="n">Active</span>   <span class="mi">39</span><span class="n">h</span>
+<span class="n">kube</span><span class="o">-</span><span class="n">public</span>       <span class="n">Active</span>   <span class="mi">39</span><span class="n">h</span>
+<span class="n">kube</span><span class="o">-</span><span class="n">system</span>       <span class="n">Active</span>   <span class="mi">39</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>Si no especifico namespace los pods van al namespace default,
+kube-system es el namespace de kubernetes no tocar.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="nb">all</span> <span class="o">-</span><span class="n">n</span> <span class="n">kube</span><span class="o">-</span><span class="n">system</span>
+<span class="n">NAME</span>                                   <span class="n">READY</span>   <span class="n">STATUS</span>    <span class="n">RESTARTS</span>   <span class="n">AGE</span>
+<span class="n">pod</span><span class="o">/</span><span class="n">coredns</span><span class="o">-</span><span class="mi">6955765</span><span class="n">f44</span><span class="o">-</span><span class="n">pfbbz</span>           <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>   <span class="mi">0</span>          <span class="mi">39</span><span class="n">h</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Crear namespace</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">create</span> <span class="n">namespace</span> <span class="n">test</span><span class="o">-</span><span class="n">ns</span>
+<span class="n">namespace</span><span class="o">/</span><span class="n">test</span><span class="o">-</span><span class="n">ns</span> <span class="n">created</span>
+<span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">namespaces</span>
+<span class="n">NAME</span>              <span class="n">STATUS</span>   <span class="n">AGE</span>
+<span class="n">default</span>           <span class="n">Active</span>   <span class="mi">39</span><span class="n">h</span>
+<span class="n">kube</span><span class="o">-</span><span class="n">node</span><span class="o">-</span><span class="n">lease</span>   <span class="n">Active</span>   <span class="mi">39</span><span class="n">h</span>
+<span class="n">kube</span><span class="o">-</span><span class="n">public</span>       <span class="n">Active</span>   <span class="mi">39</span><span class="n">h</span>
+<span class="n">kube</span><span class="o">-</span><span class="n">system</span>       <span class="n">Active</span>   <span class="mi">39</span><span class="n">h</span>
+<span class="n">test</span><span class="o">-</span><span class="n">ns</span>           <span class="n">Active</span>   <span class="mi">4</span><span class="n">s</span>
+<span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">namespaces</span> <span class="o">--</span><span class="n">show</span><span class="o">-</span><span class="n">labels</span>
+<span class="n">NAME</span>              <span class="n">STATUS</span>   <span class="n">AGE</span>   <span class="n">LABELS</span>
+<span class="n">default</span>           <span class="n">Active</span>   <span class="mi">39</span><span class="n">h</span>   <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="n">kube</span><span class="o">-</span><span class="n">node</span><span class="o">-</span><span class="n">lease</span>   <span class="n">Active</span>   <span class="mi">39</span><span class="n">h</span>   <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="n">kube</span><span class="o">-</span><span class="n">public</span>       <span class="n">Active</span>   <span class="mi">39</span><span class="n">h</span>   <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="n">kube</span><span class="o">-</span><span class="n">system</span>       <span class="n">Active</span>   <span class="mi">39</span><span class="n">h</span>   <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="n">test</span><span class="o">-</span><span class="n">ns</span>           <span class="n">Active</span>   <span class="mi">22</span><span class="n">s</span>   <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">describe</span> <span class="n">namespaces</span> <span class="n">test</span><span class="o">-</span><span class="n">ns</span>
+<span class="n">Name</span><span class="p">:</span>         <span class="n">test</span><span class="o">-</span><span class="n">ns</span>
+<span class="n">Labels</span><span class="p">:</span>       <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="n">Annotations</span><span class="p">:</span>  <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="n">Status</span><span class="p">:</span>       <span class="n">Active</span>
+
+<span class="n">No</span> <span class="n">resource</span> <span class="n">quota</span><span class="o">.</span>
+
+<span class="n">No</span> <span class="n">LimitRange</span> <span class="n">resource</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="dns">
+<h3>DNS<a class="headerlink" href="#dns" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Full qualified domain name</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nombreServicio</span> <span class="o">+</span> <span class="n">nombreNameSpace</span> <span class="o">+</span> <span class="n">svc</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">local</span> <span class="p">(</span><span class="n">dns</span> <span class="k">del</span> <span class="n">cluster</span><span class="p">)</span>
+<span class="n">Se</span> <span class="n">podra</span> <span class="n">acceder</span> <span class="n">desde</span> <span class="n">cualquier</span> <span class="n">namespace</span>
+<span class="n">curl</span> <span class="n">backend</span><span class="o">-</span><span class="n">k8s</span><span class="o">-</span><span class="n">hands</span><span class="o">-</span><span class="n">on</span><span class="o">.</span><span class="n">ci</span><span class="o">.</span><span class="n">svc</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">local</span>
+</pre></div>
+</div>
+</section>
+<section id="contextos-y-namespaces">
+<h3>Contextos y namespaces<a class="headerlink" href="#contextos-y-namespaces" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Da un contexto para las operaciones, de esta forma no es necesario
+especificar el namespace</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">namespaces</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">config</span> <span class="n">current</span><span class="o">-</span><span class="n">context</span>
+<span class="n">minikube</span>
+</pre></div>
+</div>
+<p>El contexto esta guardado en la configuración de kubernetes fichero
+config .kube:raw-latex:<cite>config</cite></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">namespaces</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">config</span> <span class="n">view</span>
+<span class="n">apiVersion</span><span class="p">:</span> <span class="n">v1</span>
+<span class="n">clusters</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">cluster</span><span class="p">:</span>
+    <span class="n">insecure</span><span class="o">-</span><span class="n">skip</span><span class="o">-</span><span class="n">tls</span><span class="o">-</span><span class="n">verify</span><span class="p">:</span> <span class="n">true</span>
+    <span class="n">server</span><span class="p">:</span> <span class="s2">""</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Para crear un nuevo contexto y poder cambiar de contexto</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">namespaces</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">config</span> <span class="nb">set</span><span class="o">-</span><span class="n">context</span> <span class="n">ci</span><span class="o">-</span><span class="n">context</span> <span class="o">--</span><span class="n">namespace</span><span class="o">=</span><span class="n">ci</span> <span class="o">--</span><span class="n">cluster</span><span class="o">=</span><span class="n">minikube</span> <span class="o">--</span><span class="n">user</span><span class="o">=</span><span class="n">minikube</span>
+<span class="n">Context</span> <span class="s2">"ci-context"</span> <span class="n">created</span><span class="o">.</span>
+
+\<span class="n">kubernetes</span>\<span class="n">namespaces</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">config</span> <span class="n">view</span>
+<span class="n">apiVersion</span><span class="p">:</span> <span class="n">v1</span>
+<span class="n">clusters</span><span class="p">:</span>
+<span class="o">...</span>
+\<span class="n">kubernetes</span>\<span class="n">namespaces</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">config</span> <span class="n">use</span><span class="o">-</span><span class="n">context</span> <span class="n">ci</span><span class="o">-</span><span class="n">context</span>
+<span class="n">Switched</span> <span class="n">to</span> <span class="n">context</span> <span class="s2">"ci-context"</span><span class="o">.</span>
+\<span class="n">kubernetes</span>\<span class="n">namespaces</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span>
+<span class="n">NAME</span>                                    <span class="n">READY</span>   <span class="n">STATUS</span>    <span class="n">RESTARTS</span>   <span class="n">AGE</span>
+<span class="n">backend</span><span class="o">-</span><span class="n">k8s</span><span class="o">-</span><span class="n">hands</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="mi">74</span><span class="n">b989d848</span><span class="o">-</span><span class="mi">889</span><span class="n">fp</span>   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>   <span class="mi">0</span>          <span class="mi">13</span><span class="n">m</span>
+<span class="n">backend</span><span class="o">-</span><span class="n">k8s</span><span class="o">-</span><span class="n">hands</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="mi">74</span><span class="n">b989d848</span><span class="o">-</span><span class="n">lr9sj</span>   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>   <span class="mi">0</span>          <span class="mi">13</span><span class="n">m</span>
+<span class="n">backend</span><span class="o">-</span><span class="n">k8s</span><span class="o">-</span><span class="n">hands</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="mi">74</span><span class="n">b989d848</span><span class="o">-</span><span class="n">vjxsd</span>   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>   <span class="mi">0</span>          <span class="mi">13</span><span class="n">m</span>
+\<span class="n">kubernetes</span>\<span class="n">namespaces</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">svc</span>
+<span class="n">NAME</span>                   <span class="n">TYPE</span>        <span class="n">CLUSTER</span><span class="o">-</span><span class="n">IP</span>      <span class="n">EXTERNAL</span><span class="o">-</span><span class="n">IP</span>   <span class="n">PORT</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>   <span class="n">AGE</span>
+<span class="n">backend</span><span class="o">-</span><span class="n">k8s</span><span class="o">-</span><span class="n">hands</span><span class="o">-</span><span class="n">on</span>   <span class="n">ClusterIP</span>   <span class="mf">10.100.215.85</span>   <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>        <span class="mi">80</span><span class="o">/</span><span class="n">TCP</span>    <span class="mi">13</span><span class="n">m</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Creamos un pod que supera el limite de memoria</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">limits</span>\<span class="n">request</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span>\<span class="n">limits</span><span class="o">-</span><span class="n">ram2</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">pod</span><span class="o">/</span><span class="n">memory</span><span class="o">-</span><span class="n">demo</span> <span class="n">created</span>
+\<span class="n">kubernetes</span>\<span class="n">limits</span>\<span class="n">request</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span> <span class="o">--</span><span class="n">watch</span>
+<span class="n">NAME</span>          <span class="n">READY</span>   <span class="n">STATUS</span>      <span class="n">RESTARTS</span>   <span class="n">AGE</span>
+<span class="n">memory</span><span class="o">-</span><span class="n">demo</span>   <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="n">OOMKilled</span>   <span class="mi">0</span>          <span class="mi">11</span><span class="n">s</span>
+<span class="n">memory</span><span class="o">-</span><span class="n">demo</span>   <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="n">OOMKilled</span>   <span class="mi">1</span>          <span class="mi">15</span><span class="n">s</span>
+<span class="n">memory</span><span class="o">-</span><span class="n">demo</span>   <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="n">CrashLoopBackOff</span>   <span class="mi">1</span>          <span class="mi">16</span><span class="n">s</span>
+<span class="n">memory</span><span class="o">-</span><span class="n">demo</span>   <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="n">OOMKilled</span>          <span class="mi">2</span>          <span class="mi">33</span><span class="n">s</span>
+<span class="n">memory</span><span class="o">-</span><span class="n">demo</span>   <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="n">CrashLoopBackOff</span>   <span class="mi">2</span>          <span class="mi">34</span><span class="n">s</span>
+<span class="n">memory</span><span class="o">-</span><span class="n">demo</span>   <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="n">OOMKilled</span>          <span class="mi">3</span>          <span class="mi">68</span><span class="n">s</span>
+<span class="n">memory</span><span class="o">-</span><span class="n">demo</span>   <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>     <span class="n">CrashLoopBackOff</span>   <span class="mi">3</span>          <span class="mi">69</span><span class="n">s</span>
+
+\<span class="n">kubernetes</span>\<span class="n">limits</span>\<span class="n">request</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">describe</span> <span class="n">pod</span> <span class="n">memory</span><span class="o">-</span><span class="n">demo</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Para ver las estadisticas de uso ram y cpu</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">limits</span>\<span class="n">request</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">describe</span> <span class="n">node</span> <span class="n">minikube</span>
+</pre></div>
+</div>
+</section>
+<section id="qos">
+<h3>QoS<a class="headerlink" href="#qos" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Si coincide en limits y requests está garantizado, Guaranteed Si puede
+subir porque limits es mayor a request, Burstable Cuando no tiene
+límites, los más peligrosos ya que puede colapsar un nodo, BestEffort</p>
+</section>
+<section id="limitrange">
+<h3>LimitRange<a class="headerlink" href="#limitrange" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para namespaces se pueden dar límites por defecto</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">limits</span>\<span class="n">limits</span><span class="o">-</span><span class="nb">range</span><span class="o">-</span><span class="n">namespaces</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">limitrange</span> <span class="o">-</span><span class="n">n</span> <span class="n">dev</span>
+<span class="n">NAME</span>                  <span class="n">CREATED</span> <span class="n">AT</span>
+<span class="n">mem</span><span class="o">-</span><span class="n">cpu</span><span class="o">-</span><span class="n">limit</span><span class="o">-</span><span class="nb">range</span>   <span class="mi">2020</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="n">T09</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">21</span><span class="n">Z</span>
+\<span class="n">kubernetes</span>\<span class="n">limits</span>\<span class="n">limits</span><span class="o">-</span><span class="nb">range</span><span class="o">-</span><span class="n">namespaces</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">describe</span> <span class="n">limitrange</span> <span class="o">-</span><span class="n">n</span> <span class="n">dev</span>
+<span class="n">Name</span><span class="p">:</span>       <span class="n">mem</span><span class="o">-</span><span class="n">cpu</span><span class="o">-</span><span class="n">limit</span><span class="o">-</span><span class="nb">range</span>
+<span class="n">Namespace</span><span class="p">:</span>  <span class="n">dev</span>
+<span class="n">Type</span>        <span class="n">Resource</span>  <span class="n">Min</span>  <span class="n">Max</span>  <span class="n">Default</span> <span class="n">Request</span>  <span class="n">Default</span> <span class="n">Limit</span>  <span class="n">Max</span> <span class="n">Limit</span><span class="o">/</span><span class="n">Request</span> <span class="n">Ratio</span>
+<span class="o">----</span>        <span class="o">--------</span>  <span class="o">---</span>  <span class="o">---</span>  <span class="o">---------------</span>  <span class="o">-------------</span>  <span class="o">-----------------------</span>
+<span class="n">Container</span>   <span class="n">cpu</span>       <span class="o">-</span>    <span class="o">-</span>    <span class="mi">500</span><span class="n">m</span>             <span class="mi">1</span>              <span class="o">-</span>
+<span class="n">Container</span>   <span class="n">memory</span>    <span class="o">-</span>    <span class="o">-</span>    <span class="mi">256</span><span class="n">Mi</span>            <span class="mi">512</span><span class="n">Mi</span>          <span class="o">-</span>
+
+\<span class="n">kubernetes</span>\<span class="n">limits</span>\<span class="n">limits</span><span class="o">-</span><span class="nb">range</span><span class="o">-</span><span class="n">namespaces</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">describe</span> <span class="n">limitranges</span> <span class="o">-</span><span class="n">n</span> <span class="n">prod</span>
+<span class="n">Name</span><span class="p">:</span>       <span class="n">mem</span><span class="o">-</span><span class="nb">min</span><span class="o">-</span><span class="nb">max</span><span class="o">-</span><span class="n">demo</span><span class="o">-</span><span class="n">lr</span>
+<span class="n">Namespace</span><span class="p">:</span>  <span class="n">prod</span>
+<span class="n">Type</span>        <span class="n">Resource</span>  <span class="n">Min</span>   <span class="n">Max</span>  <span class="n">Default</span> <span class="n">Request</span>  <span class="n">Default</span> <span class="n">Limit</span>  <span class="n">Max</span> <span class="n">Limit</span><span class="o">/</span><span class="n">Request</span> <span class="n">Ratio</span>
+<span class="o">----</span>        <span class="o">--------</span>  <span class="o">---</span>   <span class="o">---</span>  <span class="o">---------------</span>  <span class="o">-------------</span>  <span class="o">-----------------------</span>
+<span class="n">Container</span>   <span class="n">cpu</span>       <span class="mi">100</span><span class="n">m</span>  <span class="mi">1</span>    <span class="mi">1</span>                <span class="mi">1</span>              <span class="o">-</span>
+<span class="n">Container</span>   <span class="n">memory</span>    <span class="mi">100</span><span class="n">M</span>  <span class="mi">1</span><span class="n">Gi</span>  <span class="mi">1</span><span class="n">Gi</span>              <span class="mi">1</span><span class="n">Gi</span>            <span class="o">-</span>
+</pre></div>
+</div>
+</section>
+<section id="resourcequota">
+<h3>ResourceQuota<a class="headerlink" href="#resourcequota" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>LimitRange limita los recursos para el namespace, es útil para limitar
+recursos individualmente. Los Pods deberán de cumplir con el LimitRange.
+ResourceQuota no actúa a nivel de objeto lo hace a nivel de namespace.
+Limita mediante el sumatorio de los recursos individuales. Cuando se
+cumple la cuota no permite crear el Pod. Se suelen utilizar
+conjuntamente, a nivel de objeto y a nivel de namespace
+independientemente del número de objetos.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">resourcequota</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span>\<span class="n">res</span><span class="o">-</span><span class="n">quota</span><span class="o">.</span><span class="n">yml</span>
+<span class="n">namespace</span><span class="o">/</span><span class="n">uat</span> <span class="n">created</span>
+<span class="n">resourcequota</span><span class="o">/</span><span class="n">mem</span><span class="o">-</span><span class="n">cpu</span><span class="o">-</span><span class="n">demo</span> <span class="n">created</span>
+\<span class="n">kubernetes</span>\<span class="n">resourcequota</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">describe</span> <span class="n">resourcequotas</span> <span class="o">-</span><span class="n">n</span> <span class="n">uat</span>
+<span class="o">...</span>
+<span class="n">Resource</span> <span class="n">Quotas</span>
+ <span class="n">Name</span><span class="p">:</span>     <span class="n">pod</span><span class="o">-</span><span class="n">demo</span>
+ <span class="n">Resource</span>  <span class="n">Used</span>  <span class="n">Hard</span>
+ <span class="o">--------</span>  <span class="o">---</span>   <span class="o">---</span>
+ <span class="n">pods</span>      <span class="mi">3</span>     <span class="mi">3</span>
+<span class="n">No</span> <span class="n">LimitRange</span> <span class="n">resource</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="probes">
+<h2>PROBES<a class="headerlink" href="#probes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Pruebas de diagnóstico sobre los pods</p>
+<p>Kubelet es quien sondea con probes a los pods, esto lo hace:</p>
+<ol class="arabic simple">
+<li><p>Comando: se ejecuta un comando si devuelve 0 está OK si no no</p></li>
+<li><p>TCP: testeo de puerto, si responde OK si no no</p></li>
+<li><p>HTTP: hace un get sobre /path y si la respuesta es entre 200 y 399 es
+OK si no no Tipos, cualquiera de ellos se ejecuta a través de
+Comando, TCP o HTTP:</p></li>
+</ol>
+<ul>
+<li><p><strong>Liveness</strong></p>
+<p>Diagnóstico para ver si la aplicación funciona como debería, se
+ejecuta cada n intervalo de tiempo.</p>
+<p>Con liveness probes podemos configurar un check y decidir cuándo
+considerar que el pod está «vivo». Para ello podemos introducir en
+nuestro fichero yaml una configuración como la siguiente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">livenessProbe</span><span class="p">:</span>
+  <span class="n">httpGet</span><span class="p">:</span>
+    <span class="n">path</span><span class="p">:</span> <span class="o">/</span><span class="n">live</span><span class="o">.</span><span class="n">php</span>
+    <span class="n">port</span><span class="p">:</span> <span class="mi">8080</span>
+    <span class="n">httpHeaders</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">X</span><span class="o">-</span><span class="n">Custom</span><span class="o">-</span><span class="n">Header</span>
+        <span class="n">value</span><span class="p">:</span> <span class="n">Live</span>
+  <span class="n">initialDelaySeconds</span><span class="p">:</span> <span class="mi">30</span>
+  <span class="n">timeoutSeconds</span><span class="p">:</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kubernetes</span>\<span class="n">probes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span>\<span class="n">liveness</span><span class="o">.</span><span class="n">yml</span>
+\<span class="n">kubernetes</span>\<span class="n">probes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">describe</span> <span class="n">pod</span> <span class="n">liveness</span>
+<span class="o">...</span>
+  <span class="n">Type</span>     <span class="n">Reason</span>     <span class="n">Age</span>                  <span class="n">From</span>               <span class="n">Message</span>
+  <span class="o">----</span>     <span class="o">------</span>     <span class="o">----</span>                 <span class="o">----</span>               <span class="o">-------</span>
+  <span class="n">Normal</span>   <span class="n">Scheduled</span>  <span class="o">&lt;</span><span class="n">unknown</span><span class="o">&gt;</span>            <span class="n">default</span><span class="o">-</span><span class="n">scheduler</span>  <span class="n">Successfully</span> <span class="n">assigned</span> <span class="n">default</span><span class="o">/</span><span class="n">liveness</span><span class="o">-</span><span class="n">exec</span> <span class="n">to</span> <span class="n">minikube</span>
+  <span class="ne">Warning</span>  <span class="n">Unhealthy</span>  <span class="mi">50</span><span class="n">s</span> <span class="p">(</span><span class="n">x6</span> <span class="n">over</span> <span class="mi">2</span><span class="n">m20s</span><span class="p">)</span>  <span class="n">kubelet</span><span class="p">,</span> <span class="n">minikube</span>  <span class="n">Liveness</span> <span class="n">probe</span> <span class="n">failed</span><span class="p">:</span> <span class="n">cat</span><span class="p">:</span> <span class="n">can</span><span class="s1">'t open '</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">healthy</span><span class="s1">': No such file or directory</span>
+  <span class="n">Normal</span>   <span class="n">Killing</span>    <span class="mi">50</span><span class="n">s</span> <span class="p">(</span><span class="n">x2</span> <span class="n">over</span> <span class="mi">2</span><span class="n">m10s</span><span class="p">)</span>  <span class="n">kubelet</span><span class="p">,</span> <span class="n">minikube</span>  <span class="n">Container</span> <span class="n">liveness</span> <span class="n">failed</span> <span class="n">liveness</span> <span class="n">probe</span><span class="p">,</span> <span class="n">will</span> <span class="n">be</span> <span class="n">restarted</span>
+  <span class="n">Normal</span>   <span class="n">Pulling</span>    <span class="mi">19</span><span class="n">s</span> <span class="p">(</span><span class="n">x3</span> <span class="n">over</span> <span class="mi">3</span><span class="n">m</span><span class="p">)</span>     <span class="n">kubelet</span><span class="p">,</span> <span class="n">minikube</span>  <span class="n">Pulling</span> <span class="n">image</span> <span class="s2">"k8s.gcr.io/busybox"</span>
+  <span class="n">Normal</span>   <span class="n">Pulled</span>     <span class="mi">17</span><span class="n">s</span> <span class="p">(</span><span class="n">x3</span> <span class="n">over</span> <span class="mi">2</span><span class="n">m55s</span><span class="p">)</span>  <span class="n">kubelet</span><span class="p">,</span> <span class="n">minikube</span>  <span class="n">Successfully</span> <span class="n">pulled</span> <span class="n">image</span> <span class="s2">"k8s.gcr.io/busybox"</span>
+  <span class="n">Normal</span>   <span class="n">Created</span>    <span class="mi">16</span><span class="n">s</span> <span class="p">(</span><span class="n">x3</span> <span class="n">over</span> <span class="mi">2</span><span class="n">m54s</span><span class="p">)</span>  <span class="n">kubelet</span><span class="p">,</span> <span class="n">minikube</span>  <span class="n">Created</span> <span class="n">container</span> <span class="n">liveness</span>
+  <span class="n">Normal</span>   <span class="n">Started</span>    <span class="mi">15</span><span class="n">s</span> <span class="p">(</span><span class="n">x3</span> <span class="n">over</span> <span class="mi">2</span><span class="n">m53s</span><span class="p">)</span>  <span class="n">kubelet</span><span class="p">,</span> <span class="n">minikube</span>  <span class="n">Started</span> <span class="n">container</span> <span class="n">liveness</span>
+
+\<span class="n">kubernetes</span>\<span class="n">probes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span>\<span class="n">liveness</span><span class="o">-</span><span class="n">tcp</span><span class="o">.</span><span class="n">yml</span>
+
+\<span class="n">kubernetes</span>\<span class="n">probes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">describe</span> <span class="n">pod</span> <span class="n">goproxy</span>
+<span class="n">Name</span><span class="p">:</span>         <span class="n">goproxy</span>
+<span class="o">...</span>
+\<span class="n">kubernetes</span>\<span class="n">probes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span> <span class="n">liveness</span><span class="o">-</span><span class="n">http</span> <span class="o">-</span><span class="n">o</span> <span class="n">yaml</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="n">liv</span> <span class="o">-</span><span class="n">A12</span>
+      <span class="p">{</span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="s2">"v1"</span><span class="p">,</span><span class="s2">"kind"</span><span class="p">:</span><span class="s2">"Pod"</span><span class="p">,</span><span class="s2">"metadata"</span><span class="p">:{</span><span class="s2">"annotations"</span><span class="p">:{},</span><span class="s2">"labels"</span><span class="p">:{</span><span class="s2">"test"</span><span class="p">:</span><span class="s2">"liveness"</span><span class="p">},</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"liveness-http"</span><span class="p">,</span><span class="s2">"namespace"</span><span class="p">:</span><span class="s2">"default"</span><span class="p">},</span><span class="s2">"spec"</span><span class="p">:{</span><span class="s2">"containers"</span><span class="p">:[{</span><span class="s2">"args"</span><span class="p">:[</span><span class="s2">"/server"</span><span class="p">],</span><span class="s2">"image"</span><span class="p">:</span><span class="s2">"k8s.gcr.io/liveness"</span><span class="p">,</span><span class="s2">"livenessProbe"</span><span class="p">:{</span><span class="s2">"httpGet"</span><span class="p">:{</span><span class="s2">"httpHeaders"</span><span class="p">:[{</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Custom-Header"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"Awesome"</span><span class="p">}],</span><span class="s2">"path"</span><span class="p">:</span><span class="s2">"/healthz"</span><span class="p">,</span><span class="s2">"port"</span><span class="p">:</span><span class="mi">8080</span><span class="p">},</span><span class="s2">"initialDelaySeconds"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="s2">"periodSeconds"</span><span class="p">:</span><span class="mi">3</span><span class="p">},</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"liveness"</span><span class="p">}]}}</span>
+  <span class="n">creationTimestamp</span><span class="p">:</span> <span class="s2">"2020-02-24T15:44:23Z"</span>
+  <span class="n">labels</span><span class="p">:</span>
+    <span class="n">test</span><span class="p">:</span> <span class="n">liveness</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Readiness</strong></p>
+<p>La aplicación se inició como debería, si levanto un pod hasta que no
+esté listo no se utiliza como endpoint no se incorporará al servicio.
+Si el puerto no está abierto desregistra la IP de los endpoints de
+servicio para que el pod no reciba más carga hasta que no esté en un
+estado correcto.</p>
+<p>Readiness probes las podemos usar para comprobar que el pod realiza
+las tareas para las que está configurado. Por ejemplo, podemos
+ejecutar un comando y dependiendo del resultado que nos devuelva,
+considerar que es correcto o no., como en el siguiente ejemplo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">readinessProbe</span><span class="p">:</span>
+  <span class="n">exec</span><span class="p">:</span>
+    <span class="n">command</span><span class="p">:</span>
+        <span class="o">-</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">checker</span>
+        <span class="o">-</span> <span class="o">--</span><span class="n">full</span><span class="o">-</span><span class="n">check</span>
+        <span class="o">-</span> <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">hue</span><span class="o">-</span><span class="n">multimedia</span><span class="o">-</span><span class="n">service</span>
+    <span class="n">initialDelaySeconds</span><span class="p">:</span> <span class="mi">60</span>
+    <span class="n">timeoutSeconds</span><span class="p">:</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Startup</strong> Aplicaciones que se retrasan en el inicio, se ejecuta el
+primero Liveness y Readiness tienen que esperarlo se pausan.
+Esperarán hasta que estemos seguros de que la aplicación está lista.</p>
+<p>Exec Probe</p>
+<p>Ejecuta un comando dentro del contenedor como un heatlh check</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">startupProbe</span><span class="p">:</span>
+  <span class="n">initialDelaySeconds</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">periodSeconds</span><span class="p">:</span> <span class="mi">5</span>
+  <span class="n">timeoutSeconds</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">successThreshold</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">failureThreshold</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">exec</span><span class="p">:</span>
+    <span class="n">command</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">cat</span>
+    <span class="o">-</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">nginx</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>TCP Probe</p>
+<p>Comprueba si el puerto específico está abierto o no</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">startupProbe</span><span class="p">:</span>
+  <span class="n">initialDelaySeconds</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">periodSeconds</span><span class="p">:</span> <span class="mi">5</span>
+  <span class="n">timeoutSeconds</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">successThreshold</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">failureThreshold</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="n">tcpSocket</span><span class="p">:</span>
+    <span class="n">host</span><span class="p">:</span>
+    <span class="n">port</span><span class="p">:</span> <span class="mi">80</span>
+</pre></div>
+</div>
+<p>HTTP Probe</p>
+<p>Envia una petición HTTP GET con unos parámetros definidos</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">host</span><span class="p">:</span> <span class="n">Host</span><span class="o">/</span><span class="n">IP</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">pod</span> <span class="n">IP</span><span class="p">)</span>
+<span class="n">scheme</span><span class="p">:</span> <span class="n">Scheme</span> <span class="n">to</span> <span class="n">use</span> <span class="n">when</span> <span class="n">making</span> <span class="n">the</span> <span class="n">request</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">HTTP</span><span class="p">)</span>
+<span class="n">path</span><span class="p">:</span> <span class="n">Path</span>
+<span class="n">httpHeaders</span><span class="p">:</span> <span class="n">An</span> <span class="n">array</span> <span class="n">of</span> <span class="n">headers</span> <span class="n">defined</span> <span class="k">as</span> <span class="n">header</span><span class="o">/</span><span class="n">value</span> <span class="n">tuples</span><span class="o">.</span>
+<span class="n">port</span><span class="p">:</span> <span class="n">Port</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span>
+
+<span class="n">Tip</span><span class="p">:</span> <span class="n">Host</span> <span class="n">header</span> <span class="n">should</span> <span class="n">be</span> <span class="nb">set</span> <span class="ow">in</span> <span class="n">httpHeaders</span><span class="o">.</span>
+
+    <span class="n">startupProbe</span><span class="p">:</span>
+      <span class="n">initialDelaySeconds</span><span class="p">:</span> <span class="mi">1</span>
+      <span class="n">periodSeconds</span><span class="p">:</span> <span class="mi">2</span>
+      <span class="n">timeoutSeconds</span><span class="p">:</span> <span class="mi">1</span>
+      <span class="n">successThreshold</span><span class="p">:</span> <span class="mi">1</span>
+      <span class="n">failureThreshold</span><span class="p">:</span> <span class="mi">1</span>
+      <span class="n">httpGet</span><span class="p">:</span>
+        <span class="n">host</span><span class="p">:</span>
+        <span class="n">scheme</span><span class="p">:</span> <span class="n">HTTP</span>
+        <span class="n">path</span><span class="p">:</span> <span class="o">/</span>
+        <span class="n">httpHeaders</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Host</span>
+          <span class="n">value</span><span class="p">:</span> <span class="n">myapplication1</span><span class="o">.</span><span class="n">com</span>
+        <span class="n">port</span><span class="p">:</span> <span class="mi">80</span>
+      <span class="n">initialDelaySeconds</span><span class="p">:</span> <span class="mi">5</span>
+      <span class="n">periodSeconds</span><span class="p">:</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="configmap">
+<h2>CONFIGMAP<a class="headerlink" href="#configmap" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Maneja el versionado de dockerfiles, separa las configuraciones para
+hacer más portable los Pods, la configuración no se hace hardcoded en el
+Pod si no que se hace en el ConfigMap. Los configmaps están compuestos
+por clave, valor. P.e. Nginx:port, 80 Ng.conf , para que el manifest de
+un Pod vea el configmap se pueden utilizar variables de entorno.</p>
+<ul class="simple">
+<li><p>Configuración de nginx</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">envs</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="o">-</span><span class="n">ti</span> <span class="o">--</span><span class="n">generator</span><span class="o">=</span><span class="n">run</span><span class="o">-</span><span class="n">pod</span><span class="o">/</span><span class="n">v1</span> <span class="n">podtest3</span> <span class="o">--</span><span class="n">image</span><span class="o">=</span><span class="n">nginx</span><span class="p">:</span><span class="n">alpine</span> <span class="o">--</span> <span class="n">sh</span>
+<span class="n">If</span> <span class="n">you</span> <span class="n">don</span><span class="s1">'t see a command prompt, try pressing enter.</span>
+<span class="o">/</span> <span class="c1">#</span>
+<span class="o">/</span> <span class="c1">#</span>
+<span class="o">/</span> <span class="c1"># cat etc/nginx/conf.d/default.conf</span>
+<span class="n">server</span> <span class="p">{</span>
+    <span class="n">listen</span>       <span class="mi">80</span><span class="p">;</span>
+<span class="o">...</span>
+\<span class="n">kubernetes</span>\<span class="n">configmap</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">create</span> <span class="n">configmap</span> <span class="n">nginx</span><span class="o">-</span><span class="n">config</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">file</span> <span class="o">.</span>\<span class="n">configmap</span><span class="o">-</span><span class="n">samples</span>\<span class="n">nginx</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">configmap</span><span class="o">/</span><span class="n">nginx</span><span class="o">-</span><span class="n">config</span> <span class="n">created</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Tambien se puede crear desde una carpeta</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">configmap</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">create</span> <span class="n">configmap</span> <span class="n">nginx</span><span class="o">-</span><span class="n">config1</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">file</span> <span class="o">.</span>\<span class="n">configmap</span><span class="o">-</span><span class="n">samples</span>
+<span class="n">configmap</span><span class="o">/</span><span class="n">nginx</span><span class="o">-</span><span class="n">config1</span> <span class="n">created</span>
+\<span class="n">kubernetes</span>\<span class="n">configmap</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">cm</span>
+<span class="n">NAME</span>           <span class="n">DATA</span>   <span class="n">AGE</span>
+<span class="n">nginx</span><span class="o">-</span><span class="n">config</span>   <span class="mi">1</span>      <span class="mi">27</span><span class="n">s</span>
+\<span class="n">kubernetes</span>\<span class="n">configmap</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">describe</span> <span class="n">cm</span> <span class="n">nginx</span><span class="o">-</span><span class="n">config</span>
+<span class="n">Name</span><span class="p">:</span>         <span class="n">nginx</span><span class="o">-</span><span class="n">config</span>
+<span class="n">Namespace</span><span class="p">:</span>    <span class="n">default</span>
+<span class="n">Labels</span><span class="p">:</span>       <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="n">Annotations</span><span class="p">:</span>  <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="n">Data</span>
+<span class="o">...</span>
+\<span class="n">kubernetes</span>\<span class="n">configmap</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span>\<span class="n">cm</span><span class="o">-</span><span class="n">nginx</span><span class="o">-</span><span class="n">vol</span><span class="o">.</span><span class="n">yaml</span>
+\<span class="n">kubernetes</span>\<span class="n">configmap</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span>
+<span class="n">NAME</span>                               <span class="n">READY</span>   <span class="n">STATUS</span>    <span class="n">RESTARTS</span>   <span class="n">AGE</span>
+<span class="n">deployment</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="mi">7</span><span class="n">f57955494</span><span class="o">-</span><span class="n">sktn6</span>   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>   <span class="mi">0</span>          <span class="mi">114</span><span class="n">s</span>
+\<span class="n">kubernetes</span>\<span class="n">configmap</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">exec</span> <span class="o">-</span><span class="n">ti</span> <span class="n">deployment</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="mi">7</span><span class="n">f57955494</span><span class="o">-</span><span class="n">sktn6</span> <span class="o">--</span> <span class="n">sh</span>
+<span class="o">/</span> <span class="c1"># cat /etc/nginx/conf.d/default.conf</span>
+<span class="n">server</span> <span class="p">{</span>
+    <span class="n">listen</span>       <span class="mi">9090</span><span class="p">;</span>
+    <span class="n">server_name</span>  <span class="n">localhost</span><span class="p">;</span>
+    <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+        <span class="n">root</span>   <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">html</span><span class="p">;</span>
+        <span class="n">index</span>  <span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="n">index</span><span class="o">.</span><span class="n">htm</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">error_page</span>   <span class="mi">500</span> <span class="mi">502</span> <span class="mi">503</span> <span class="mi">504</span>  <span class="o">/</span><span class="mi">50</span><span class="n">x</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="o">/</span><span class="mi">50</span><span class="n">x</span><span class="o">.</span><span class="n">html</span> <span class="p">{</span>
+        <span class="n">root</span>   <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">html</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+\<span class="n">kubernetes</span>\<span class="n">configmap</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span>\<span class="n">cm</span><span class="o">-</span><span class="n">nginx</span><span class="o">-</span><span class="n">env</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">configmap</span><span class="o">/</span><span class="n">nginx</span><span class="o">-</span><span class="n">config</span> <span class="n">configured</span>
+<span class="n">configmap</span><span class="o">/</span><span class="nb">vars</span> <span class="n">unchanged</span>
+<span class="n">deployment</span><span class="o">.</span><span class="n">apps</span><span class="o">/</span><span class="n">deployment</span><span class="o">-</span><span class="n">test</span> <span class="n">created</span>
+\<span class="n">kubernetes</span>\<span class="n">configmap</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pods</span>
+<span class="n">NAME</span>                               <span class="n">READY</span>   <span class="n">STATUS</span>    <span class="n">RESTARTS</span>   <span class="n">AGE</span>
+<span class="n">deployment</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="mi">69</span><span class="n">f4684694</span><span class="o">-</span><span class="n">ht9k4</span>   <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>     <span class="n">Running</span>   <span class="mi">0</span>          <span class="mi">42</span><span class="n">m</span>
+</pre></div>
+</div>
+</section>
+<section id="secrets">
+<h2>SECRETS<a class="headerlink" href="#secrets" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Es un objeto parecido al configmap, el secret guarda datos sensibles.
+Los configmaps guardan datos no sensibles.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">secrets</span>\<span class="n">secrets</span><span class="o">-</span><span class="n">files</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">create</span> <span class="n">secret</span> <span class="n">generic</span> <span class="n">mysecret</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">file</span><span class="o">=.</span>\<span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">secret</span><span class="o">/</span><span class="n">mysecret</span> <span class="n">created</span>
+\<span class="n">kubernetes</span>\<span class="n">secrets</span>\<span class="n">secrets</span><span class="o">-</span><span class="n">files</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span>\<span class="n">secret</span><span class="o">-</span><span class="n">data</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">secret</span><span class="o">/</span><span class="n">mysecret</span> <span class="n">created</span>
+\<span class="n">kubernetes</span>\<span class="n">secrets</span>\<span class="n">secrets</span><span class="o">-</span><span class="n">files</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">secrets</span> <span class="n">mysecret</span> <span class="o">-</span><span class="n">o</span> <span class="n">yaml</span>
+<span class="n">apiVersion</span><span class="p">:</span> <span class="n">v1</span>
+<span class="n">data</span><span class="p">:</span>
+  <span class="n">password</span><span class="p">:</span> <span class="n">MWYyZDFlMmU2N2Rm</span>
+<span class="o">...</span>
+\<span class="n">kubernetes</span>\<span class="n">secrets</span>\<span class="n">secrets</span><span class="o">-</span><span class="n">files</span><span class="o">&gt;</span> <span class="n">echo</span> <span class="n">MWYyZDFlMmU2N2Rm</span> <span class="o">|</span> <span class="n">base64</span> <span class="o">--</span><span class="n">decode</span>
+<span class="mi">1</span><span class="n">f2d1e2e67df</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">base64</span><span class="p">:</span> <span class="n">invalid</span> <span class="nb">input</span>
+</pre></div>
+</div>
+<p>a través del comando envsubst se sustutiye los valores $USER y $PASS por
+los valores de variables de entorno</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\kubernetes\secrets\secrets-files&gt; set PASSWORD=pass
+\kubernetes\secrets\secrets-files&gt; echo $PASSWORD
+\kubernetes\secrets\secrets-files&gt; envsubst &lt; secure.yaml &gt; tmp.yaml
+</pre></div>
+</div>
+</section>
+<section id="volumes">
+<h2>VOLUMES<a class="headerlink" href="#volumes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se utiliza para guardar el estado en las imágenes de docker, igualmente
+lo hace kubernetes. Con esto se hacen las aplicaciones STATEFULL</p>
+<section id="emptydir">
+<h3>EmptyDir<a class="headerlink" href="#emptydir" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Cuando kubernetes crea un contenedor nuevo en un Pod porque el anterior
+ha caído, el directorio se replica como directorio vacio. El nuevo
+contenedor monta el mismo directorio. La carpeta /foo existe dentro del
+Pod, si el Pod muere si se pierde por lo que está asociado al lifecycle
+del Pod.</p>
+</section>
+<section id="hostpath">
+<h3>HostPath<a class="headerlink" href="#hostpath" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para no peder la carpeta montada cuando se recrea el Pod se mantiene a
+nivel del Nodo. No suele ser una opción para producción porque los
+distintos nodos no van a compartir el volumen.</p>
+</section>
+</section>
+<section id="cloudvols">
+<h2>CLOUDVOLS<a class="headerlink" href="#cloudvols" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El tipo de disco en AWS es EBS (Elastic Block Store) en Google Cloud PS
+(Persisted disk) Estos volúmenes se asocian a las instancias. Se
+gestionan de manera independiente. Los VolMounts se asocian a estos
+volúmenes, hay que especificar el Id del volumen, tipo del sistema de
+archivos etc. Por esto existe PVC y PV</p>
+<p>PV (PersistentVolume) Guarda: Nombre, Tamaño, Aprovisionador (AWS,
+Google Cloud) y pide estas características al aprovisionador. PVC
+(PersistentVolumeClaim), reclamación de volumen persistente, lo que
+reclama es un PV al recurso Cloud. Reclamación directa al espacio del PV
+que solicita a su vez el espacio en el Cloud. Utiliza selector a través
+de labels para identificar los PV.</p>
+<section id="persistent-volume-pv">
+<h3>Persistent Volume (PV)<a class="headerlink" href="#persistent-volume-pv" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">volumes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span>\<span class="n">pv</span><span class="o">-</span><span class="n">pvc</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">persistentvolume</span><span class="o">/</span><span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume</span> <span class="n">created</span>
+\<span class="n">kubernetes</span>\<span class="n">volumes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pv</span>
+<span class="n">NAME</span>             <span class="n">CAPACITY</span>   <span class="n">ACCESS</span> <span class="n">MODES</span>   <span class="n">RECLAIM</span> <span class="n">POLICY</span>   <span class="n">STATUS</span>      <span class="n">CLAIM</span>   <span class="n">STORAGECLASS</span>   <span class="n">REASON</span>   <span class="n">AGE</span>
+<span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume</span>   <span class="mi">1</span><span class="n">Gi</span>        <span class="n">RWO</span>            <span class="n">Retain</span>           <span class="n">Available</span>           <span class="n">manual</span>                  <span class="mi">6</span><span class="n">s</span>
+
+\<span class="n">kubernetes</span>\<span class="n">volumes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pv</span> <span class="o">--</span><span class="n">show</span><span class="o">-</span><span class="n">labels</span>
+<span class="n">NAME</span>             <span class="n">CAPACITY</span>   <span class="n">ACCESS</span> <span class="n">MODES</span>   <span class="n">RECLAIM</span> <span class="n">POLICY</span>   <span class="n">STATUS</span>      <span class="n">CLAIM</span>   <span class="n">STORAGECLASS</span>   <span class="n">REASON</span>   <span class="n">AGE</span>   <span class="n">LABELS</span>
+<span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume</span>   <span class="mi">1</span><span class="n">Gi</span>        <span class="n">RWO</span>            <span class="n">Retain</span>           <span class="n">Available</span>           <span class="n">manual</span>                  <span class="mi">46</span><span class="n">s</span>   <span class="nb">type</span><span class="o">=</span><span class="n">local</span>
+\<span class="n">kubernetes</span>\<span class="n">volumes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">describe</span> <span class="n">pv</span> <span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume</span>
+<span class="n">Name</span><span class="p">:</span>            <span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume</span>
+<span class="n">Labels</span><span class="p">:</span>          <span class="nb">type</span><span class="o">=</span><span class="n">local</span>
+<span class="n">Annotations</span><span class="p">:</span>     <span class="n">kubectl</span><span class="o">.</span><span class="n">kubernetes</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">last</span><span class="o">-</span><span class="n">applied</span><span class="o">-</span><span class="n">configuration</span><span class="p">:</span>
+                   <span class="p">{</span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="s2">"v1"</span><span class="p">,</span><span class="s2">"kind"</span><span class="p">:</span><span class="s2">"PersistentVolume"</span><span class="p">,</span><span class="s2">"metadata"</span><span class="p">:{</span><span class="s2">"annotations"</span><span class="p">:{},</span><span class="s2">"labels"</span><span class="p">:{</span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"local"</span><span class="p">},</span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"task-pv-volume"</span><span class="p">},</span><span class="s2">"spec"</span><span class="p">:{</span><span class="s2">"acce...</span>
+<span class="n">Finalizers</span><span class="p">:</span>      <span class="p">[</span><span class="n">kubernetes</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">pv</span><span class="o">-</span><span class="n">protection</span><span class="p">]</span>
+<span class="n">StorageClass</span><span class="p">:</span>    <span class="n">manual</span>
+<span class="n">Status</span><span class="p">:</span>          <span class="n">Available</span>
+<span class="n">Claim</span><span class="p">:</span>
+<span class="n">Reclaim</span> <span class="n">Policy</span><span class="p">:</span>  <span class="n">Retain</span>
+<span class="n">Access</span> <span class="n">Modes</span><span class="p">:</span>    <span class="n">RWO</span>
+<span class="n">VolumeMode</span><span class="p">:</span>      <span class="n">Filesystem</span>
+<span class="n">Capacity</span><span class="p">:</span>        <span class="mi">1</span><span class="n">Gi</span>
+<span class="n">Node</span> <span class="n">Affinity</span><span class="p">:</span>   <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+<span class="n">Message</span><span class="p">:</span>
+<span class="n">Source</span><span class="p">:</span>
+    <span class="n">Type</span><span class="p">:</span>          <span class="n">HostPath</span> <span class="p">(</span><span class="n">bare</span> <span class="n">host</span> <span class="n">directory</span> <span class="n">volume</span><span class="p">)</span>
+    <span class="n">Path</span><span class="p">:</span>          <span class="o">/</span><span class="n">test</span>
+    <span class="n">HostPathType</span><span class="p">:</span>
+<span class="n">Events</span><span class="p">:</span>            <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Unimos PVC a PV</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">volumes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span>\<span class="n">pvc</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">claim</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">persistentvolume</span><span class="o">/</span><span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume</span> <span class="n">unchanged</span>
+<span class="n">persistentvolumeclaim</span><span class="o">/</span><span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">claim</span> <span class="n">created</span>
+\<span class="n">kubernetes</span>\<span class="n">volumes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pvc</span>
+<span class="n">NAME</span>            <span class="n">STATUS</span>   <span class="n">VOLUME</span>           <span class="n">CAPACITY</span>   <span class="n">ACCESS</span> <span class="n">MODES</span>   <span class="n">STORAGECLASS</span>   <span class="n">AGE</span>
+<span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">claim</span>   <span class="n">Bound</span>    <span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume</span>   <span class="mi">1</span><span class="n">Gi</span>        <span class="n">RWO</span>            <span class="n">manual</span>         <span class="mi">7</span><span class="n">s</span>
+\<span class="n">kubernetes</span>\<span class="n">volumes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pv</span>
+<span class="n">NAME</span>             <span class="n">CAPACITY</span>   <span class="n">ACCESS</span> <span class="n">MODES</span>   <span class="n">RECLAIM</span> <span class="n">POLICY</span>   <span class="n">STATUS</span>   <span class="n">CLAIM</span>                   <span class="n">STORAGECLASS</span>   <span class="n">REASON</span>   <span class="n">AGE</span>
+<span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume</span>   <span class="mi">1</span><span class="n">Gi</span>        <span class="n">RWO</span>            <span class="n">Retain</span>           <span class="n">Bound</span>    <span class="n">default</span><span class="o">/</span><span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">claim</span>   <span class="n">manual</span>                  <span class="mi">5</span><span class="n">m35s</span>
+</pre></div>
+</div>
+<p>Unimos PVC a PV con selector</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">kubernetes</span>\<span class="n">volumes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="o">.</span>\<span class="n">pvc</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">claim</span><span class="o">-</span><span class="n">selector</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">persistentvolume</span><span class="o">/</span><span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume</span> <span class="n">created</span>
+<span class="n">persistentvolume</span><span class="o">/</span><span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume2</span> <span class="n">created</span>
+<span class="n">persistentvolumeclaim</span><span class="o">/</span><span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">claim2</span> <span class="n">created</span>
+\<span class="n">kubernetes</span>\<span class="n">volumes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pv</span>
+<span class="n">NAME</span>              <span class="n">CAPACITY</span>   <span class="n">ACCESS</span> <span class="n">MODES</span>   <span class="n">RECLAIM</span> <span class="n">POLICY</span>   <span class="n">STATUS</span>      <span class="n">CLAIM</span>                    <span class="n">STORAGECLASS</span>   <span class="n">REASON</span>   <span class="n">AGE</span>
+<span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume</span>    <span class="mi">10</span><span class="n">Gi</span>       <span class="n">RWO</span>            <span class="n">Retain</span>           <span class="n">Available</span>                            <span class="n">manual</span>                  <span class="mi">12</span><span class="n">s</span>
+<span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume2</span>   <span class="mi">10</span><span class="n">Gi</span>       <span class="n">RWO</span>            <span class="n">Retain</span>           <span class="n">Bound</span>       <span class="n">default</span><span class="o">/</span><span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">claim2</span>   <span class="n">manual</span>                  <span class="mi">12</span><span class="n">s</span>
+\<span class="n">kubernetes</span>\<span class="n">volumes</span><span class="o">&gt;</span> <span class="n">kubectl</span> <span class="n">get</span> <span class="n">pv</span> <span class="o">--</span><span class="n">show</span><span class="o">-</span><span class="n">labels</span>
+<span class="n">NAME</span>              <span class="n">CAPACITY</span>   <span class="n">ACCESS</span> <span class="n">MODES</span>   <span class="n">RECLAIM</span> <span class="n">POLICY</span>   <span class="n">STATUS</span>      <span class="n">CLAIM</span>                    <span class="n">STORAGECLASS</span>   <span class="n">REASON</span>   <span class="n">AGE</span>   <span class="n">LABELS</span>
+<span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume</span>    <span class="mi">10</span><span class="n">Gi</span>       <span class="n">RWO</span>            <span class="n">Retain</span>           <span class="n">Available</span>                            <span class="n">manual</span>                  <span class="mi">27</span><span class="n">s</span>   <span class="nb">type</span><span class="o">=</span><span class="n">local</span>
+<span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">volume2</span>   <span class="mi">10</span><span class="n">Gi</span>       <span class="n">RWO</span>            <span class="n">Retain</span>           <span class="n">Bound</span>       <span class="n">default</span><span class="o">/</span><span class="n">task</span><span class="o">-</span><span class="n">pv</span><span class="o">-</span><span class="n">claim2</span>   <span class="n">manual</span>                  <span class="mi">27</span><span class="n">s</span>   <span class="n">mysql</span><span class="o">=</span><span class="n">ready1</span>
+</pre></div>
+</div>
+<img alt="../_images/kubernetes-cheat-sheet-1.png" src="../_images/kubernetes-cheat-sheet-1.png"/>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="4-readme.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">OPENSHIFT</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="2-readme.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">ISTIO</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, jclmon |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>. |
+            <a class="muted-link" href="../_sources/usage/3-readme.rst.txt"
+               rel="nofollow">
+              Mostrar el código
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contenidos
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">KUBERNETES</a><ul>
+<li><a class="reference internal" href="#instalacion-de-minikube">Instalación de minikube</a><ul>
+<li><a class="reference internal" href="#habilitar-hyper-v-en-windows-10">Habilitar Hyper-V en windows 10</a></li>
+<li><a class="reference internal" href="#arrancar-minikube">Arrancar minikube</a></li>
+<li><a class="reference internal" href="#si-hubiese-algun-problema">Si hubiese algún problema:</a></li>
+<li><a class="reference internal" href="#asignar-el-environment-de-docker-a-minikube">Asignar el environment de docker a minikube</a></li>
+<li><a class="reference internal" href="#parar-minikube">Parar minikube</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pods">PODS</a><ul>
+<li><a class="reference internal" href="#crear-un-pod">Crear un pod</a></li>
+<li><a class="reference internal" href="#listar-pods">Listar pods</a></li>
+<li><a class="reference internal" href="#eliminar-pod">Eliminar pod</a></li>
+<li><a class="reference internal" href="#informacion-del-pod-con-salida-yaml">Información del pod con salida yaml</a></li>
+<li><a class="reference internal" href="#ver-los-logs">Ver los logs</a></li>
+<li><a class="reference internal" href="#ver-los-contenedores">Ver los contenedores</a></li>
+<li><a class="reference internal" href="#ejecutar-pod-y-entrar-al-ssh">Ejecutar pod y entrar al ssh</a></li>
+<li><a class="reference internal" href="#para-entrar-a-la-imagen-de-minikube">Para entrar a la imagen de minikube</a></li>
+<li><a class="reference internal" href="#versiones-del-api-para-manifiestos-yaml">Versiones del api para manifiestos yaml</a></li>
+<li><a class="reference internal" href="#recursos-para-manifiestos-yaml-en-este-caso-relacionados-con-pods">Recursos para manifiestos yaml, en este caso relacionados con pods</a></li>
+<li><a class="reference internal" href="#aplicar-manifiesto-yaml-para-crear-objeto">Aplicar manifiesto yaml para crear objeto</a></li>
+<li><a class="reference internal" href="#eliminar-en-base-a-manifiesto">Eliminar en base a manifiesto</a></li>
+<li><a class="reference internal" href="#lista-de-pods-informa-ip-y-status">Lista de pods, informa IP y STATUS</a></li>
+<li><a class="reference internal" href="#logs-de-un-contenedor">Logs de un contenedor</a></li>
+<li><a class="reference internal" href="#comprobar-contenedor">Comprobar contenedor</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#labels">Labels</a><ul>
+<li><a class="reference internal" href="#labels-metadata-en-manifiestos">Labels metadata en manifiestos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#replicasets">REPLICASETS</a></li>
+<li><a class="reference internal" href="#deployments">DEPLOYMENTS</a><ul>
+<li><a class="reference internal" href="#utilizar-change-cause">Utilizar CHANGE-CAUSE</a></li>
+<li><a class="reference internal" href="#utilizar-rollback-para-marcha-atras-de-despliegue">Utilizar ROLLBACK para marcha atrás de despliegue</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#services">SERVICES</a></li>
+<li><a class="reference internal" href="#ver-endpoints">Ver endpoints</a><ul>
+<li><a class="reference internal" href="#buscar-propiedades-del-deployment">Buscar propiedades del deployment</a></li>
+<li><a class="reference internal" href="#imagen-temporal-cuando-se-sale-del-ssh-se-elimina-validacion-de-otros-pods">Imagen temporal cuando se sale del ssh se elimina, validación de otros pods</a></li>
+<li><a class="reference internal" href="#namespaces">NAMESPACES</a></li>
+<li><a class="reference internal" href="#dns">DNS</a></li>
+<li><a class="reference internal" href="#contextos-y-namespaces">Contextos y namespaces</a></li>
+<li><a class="reference internal" href="#qos">QoS</a></li>
+<li><a class="reference internal" href="#limitrange">LimitRange</a></li>
+<li><a class="reference internal" href="#resourcequota">ResourceQuota</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#probes">PROBES</a></li>
+<li><a class="reference internal" href="#configmap">CONFIGMAP</a></li>
+<li><a class="reference internal" href="#secrets">SECRETS</a></li>
+<li><a class="reference internal" href="#volumes">VOLUMES</a><ul>
+<li><a class="reference internal" href="#emptydir">EmptyDir</a></li>
+<li><a class="reference internal" href="#hostpath">HostPath</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cloudvols">CLOUDVOLS</a><ul>
+<li><a class="reference internal" href="#persistent-volume-pv">Persistent Volume (PV)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js"></script>
+    <script src="../_static/translations.js"></script>
+    </body>
+</html>

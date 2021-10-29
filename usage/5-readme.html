@@ -1,0 +1,448 @@
+<!doctype html>
+<html class="no-js" lang="es">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Búsqueda" href="../search.html" /><link rel="prev" title="OPENSHIFT" href="4-readme.html" />
+
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>Docker-compose y Docker Swarm - documentación de DOCKER, KUBERNETES, OPENSHIFT, ISTIO -</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">documentación de DOCKER, KUBERNETES, OPENSHIFT, ISTIO - </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">documentación de DOCKER, KUBERNETES, OPENSHIFT, ISTIO - </span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Búsqueda name="q" aria-label="Búsqueda">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1-readme.html">DOCKER, KUBERNETES, OPENSHIFT, ISTIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-readme.html#docker">DOCKER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-readme.html">ISTIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-readme.html">KUBERNETES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-readme.html">OPENSHIFT</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Docker-compose y Docker Swarm</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="docker-compose-y-docker-swarm">
+<h1>Docker-compose y Docker Swarm<a class="headerlink" href="#docker-compose-y-docker-swarm" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Desarrollo rápido con docker-compose y docker swarm</p>
+<section id="importar-maquina-en-windows-10">
+<h2>Importar máquina en windows 10<a class="headerlink" href="#importar-maquina-en-windows-10" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">create</span> <span class="o">--</span><span class="n">driver</span> <span class="n">hyperv</span> <span class="o">--</span><span class="n">hyperv</span><span class="o">-</span><span class="n">virtual</span><span class="o">-</span><span class="n">switch</span> <span class="s2">"VM-External-Switch"</span> <span class="o">--</span><span class="n">hyperv</span><span class="o">-</span><span class="n">boot2docker</span><span class="o">-</span><span class="n">url</span> <span class="n">file</span><span class="p">:</span><span class="o">//</span><span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">boot2docker</span><span class="o">.</span><span class="n">iso</span> <span class="n">swarm1</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">env</span> <span class="n">swarm1</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">ssh</span> <span class="n">swarm1</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">create</span> <span class="o">--</span><span class="n">driver</span> <span class="n">hyperv</span> <span class="o">--</span><span class="n">hyperv</span><span class="o">-</span><span class="n">virtual</span><span class="o">-</span><span class="n">switch</span> <span class="s2">"VM-External-Switch"</span> <span class="o">--</span><span class="n">hyperv</span><span class="o">-</span><span class="n">boot2docker</span><span class="o">-</span><span class="n">url</span> <span class="n">file</span><span class="p">:</span><span class="o">//</span><span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">boot2docker</span><span class="o">.</span><span class="n">iso</span> <span class="n">swarm2</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">env</span> <span class="n">swarm2</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">machine</span> <span class="n">ssh</span> <span class="n">swarm2</span>
+</pre></div>
+</div>
+</section>
+<section id="crear-el-manager">
+<h2>Crear el manager<a class="headerlink" href="#crear-el-manager" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">docker</span><span class="c1"># docker swarm init</span>
+</pre></div>
+</div>
+</section>
+<section id="crear-worker">
+<h2>Crear worker<a class="headerlink" href="#crear-worker" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@swarm2</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">docker</span><span class="c1"># docker swarm join --token SWMTKN-1-3hdxke0ifihew0ndkicb36vpsv3vtir93amvxvtygmmn3hd1e9-6yl1ypyj0lrgei0vdk0vi0ww9 10.228.51.190:2377</span>
+</pre></div>
+</div>
+<section id="ver-nodos">
+<h3>Ver nodos<a class="headerlink" href="#ver-nodos" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">docker</span><span class="c1"># docker node ls</span>
+<span class="n">ID</span>                            <span class="n">HOSTNAME</span>            <span class="n">STATUS</span>              <span class="n">AVAILABILITY</span>        <span class="n">MANAGER</span> <span class="n">STATUS</span>      <span class="n">ENGINE</span> <span class="n">VERSION</span>
+<span class="n">z69nst3etrhfsk9k5wvhgfhtk</span> <span class="o">*</span>   <span class="n">swarm1</span>              <span class="n">Ready</span>               <span class="n">Active</span>              <span class="n">Leader</span>              <span class="mf">19.03.5</span>
+<span class="n">p53ivhbplywab5wxlpgff6f1i</span>     <span class="n">swarm2</span>              <span class="n">Ready</span>               <span class="n">Active</span>                                  <span class="mf">19.03.5</span>
+
+<span class="n">root</span><span class="nd">@swarm2</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">docker</span><span class="c1"># docker node ls</span>
+<span class="n">Error</span> <span class="n">response</span> <span class="kn">from</span> <span class="nn">daemon</span><span class="p">:</span> <span class="n">This</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">swarm</span> <span class="n">manager</span><span class="o">.</span> <span class="n">Worker</span> <span class="n">nodes</span> <span class="n">can</span><span class="s1">'t be used to view or modify cluster state. Please run this command on a manager</span>
+<span class="n">node</span> <span class="ow">or</span> <span class="n">promote</span> <span class="n">the</span> <span class="n">current</span> <span class="n">node</span> <span class="n">to</span> <span class="n">a</span> <span class="n">manager</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="instalar-docker-compose-en-la-maquina">
+<h2>Instalar docker-compose en la máquina<a class="headerlink" href="#instalar-docker-compose-en-la-maquina" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>ver: <a class="reference external" href="https://github.com/docker/compose/releases">https://github.com/docker/compose/releases</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">docker</span><span class="c1"># cd /tmp</span>
+<span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="c1"># curl -L https://github.com/docker/compose/releases/download/1.25.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose</span>
+<span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="c1">#chmod +x /usr/local/bin/docker-compose</span>
+<span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="c1"># mkdir node-redis-example</span>
+<span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="c1"># cd node-redis-example</span>
+</pre></div>
+</div>
+</section>
+<section id="crear-fichero-docker-compose-yml">
+<h2>Crear fichero docker-compose.yml<a class="headerlink" href="#crear-fichero-docker-compose-yml" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="s2">"3"</span>
+<span class="n">services</span><span class="p">:</span>
+ <span class="n">redis</span><span class="p">:</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">redis</span><span class="p">:</span><span class="n">alpine</span>
+  <span class="n">volumes</span><span class="p">:</span>
+   <span class="o">-</span> <span class="n">db</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="o">/</span><span class="n">data</span>
+  <span class="n">networks</span><span class="p">:</span>
+   <span class="n">appnet1</span><span class="p">:</span>
+    <span class="n">aliases</span><span class="p">:</span>
+     <span class="o">-</span> <span class="n">db</span>
+  <span class="n">deploy</span><span class="p">:</span>
+   <span class="n">placement</span><span class="p">:</span>
+    <span class="n">constraints</span><span class="p">:</span> <span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="n">manager</span><span class="p">]</span>
+
+ <span class="n">web</span><span class="p">:</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">katacoda</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">node</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">example</span>
+  <span class="n">networks</span><span class="p">:</span>
+   <span class="o">-</span> <span class="n">appnet1</span>
+  <span class="n">depends_on</span><span class="p">:</span>
+   <span class="o">-</span> <span class="n">redis</span>
+  <span class="n">ports</span><span class="p">:</span>
+   <span class="o">-</span> <span class="mi">8432</span><span class="p">:</span><span class="mi">3000</span>
+  <span class="n">deploy</span><span class="p">:</span>
+   <span class="n">mode</span><span class="p">:</span> <span class="n">replicated</span>
+   <span class="n">replicas</span><span class="p">:</span> <span class="mi">2</span>
+   <span class="n">labels</span><span class="p">:</span> <span class="p">[</span><span class="n">APP</span><span class="o">=</span><span class="n">WEB</span><span class="p">]</span>
+   <span class="n">resources</span><span class="p">:</span>
+    <span class="n">limits</span><span class="p">:</span>
+     <span class="n">cpus</span><span class="p">:</span> <span class="s1">'0.25'</span>
+     <span class="n">memory</span><span class="p">:</span> <span class="mi">512</span><span class="n">M</span>
+    <span class="n">reservations</span><span class="p">:</span>
+     <span class="n">cpus</span><span class="p">:</span> <span class="s1">'0.25'</span>
+     <span class="n">memory</span><span class="p">:</span> <span class="mi">256</span><span class="n">M</span>
+   <span class="n">restart_policy</span><span class="p">:</span>
+     <span class="n">condition</span><span class="p">:</span> <span class="n">on</span><span class="o">-</span><span class="n">failure</span>
+     <span class="n">delay</span><span class="p">:</span> <span class="mi">5</span><span class="n">s</span>
+     <span class="n">max_attempts</span><span class="p">:</span> <span class="mi">3</span>
+     <span class="n">window</span><span class="p">:</span> <span class="mi">120</span><span class="n">s</span>
+   <span class="n">update_config</span><span class="p">:</span>
+     <span class="n">parallelism</span><span class="p">:</span> <span class="mi">1</span>
+     <span class="n">delay</span><span class="p">:</span> <span class="mi">10</span><span class="n">s</span>
+     <span class="n">failure_action</span><span class="p">:</span> <span class="k">continue</span>
+     <span class="n">monitor</span><span class="p">:</span> <span class="mi">60</span><span class="n">s</span>
+     <span class="n">max_failure_ratio</span><span class="p">:</span> <span class="mf">0.3</span>
+   <span class="n">placement</span><span class="p">:</span>
+     <span class="n">constraints</span><span class="p">:</span> <span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="n">worker</span><span class="p">]</span>
+
+<span class="n">volumes</span><span class="p">:</span>
+ <span class="n">db</span><span class="o">-</span><span class="n">data</span><span class="p">:</span>
+<span class="n">networks</span><span class="p">:</span>
+ <span class="n">appnet1</span><span class="p">:</span>
+</pre></div>
+</div>
+</section>
+<section id="probar-compose">
+<h2>Probar compose<a class="headerlink" href="#probar-compose" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">node</span><span class="o">-</span><span class="n">redis</span><span class="o">-</span><span class="n">example</span><span class="c1">#docker-compose up -d</span>
+<span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">node</span><span class="o">-</span><span class="n">redis</span><span class="o">-</span><span class="n">example</span><span class="c1">#docker ps</span>
+<span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">node</span><span class="o">-</span><span class="n">redis</span><span class="o">-</span><span class="n">example</span><span class="c1">#docker-compose down</span>
+</pre></div>
+</div>
+</section>
+<section id="levantar-compose-en-cloud">
+<h2>Levantar compose en cloud<a class="headerlink" href="#levantar-compose-en-cloud" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">node</span><span class="o">-</span><span class="n">redis</span><span class="o">-</span><span class="n">example</span><span class="c1"># docker stack deploy -c docker-compose.yml redis-node</span>
+<span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">node</span><span class="o">-</span><span class="n">redis</span><span class="o">-</span><span class="n">example</span><span class="c1">#docker ps</span>
+</pre></div>
+</div>
+<p>Una instancia esta en el manager y otra en el nodo segun las reglas del
+deploy</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">node</span><span class="o">-</span><span class="n">redis</span><span class="o">-</span><span class="n">example</span><span class="c1"># docker stack services redis-node</span>
+<span class="n">ID</span>                  <span class="n">NAME</span>                <span class="n">MODE</span>                <span class="n">REPLICAS</span>            <span class="n">IMAGE</span>                                       <span class="n">PORTS</span>
+<span class="n">s0fet9zmwlna</span>        <span class="n">redis</span><span class="o">-</span><span class="n">node_redis</span>    <span class="n">replicated</span>          <span class="mi">1</span><span class="o">/</span><span class="mi">1</span>                 <span class="n">redis</span><span class="p">:</span><span class="n">alpine</span>
+<span class="n">vhcgmorg1znz</span>        <span class="n">redis</span><span class="o">-</span><span class="n">node_web</span>      <span class="n">replicated</span>          <span class="mi">2</span><span class="o">/</span><span class="mi">2</span>                 <span class="n">katacoda</span><span class="o">/</span><span class="n">redis</span><span class="o">-</span><span class="n">node</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">example</span><span class="p">:</span><span class="n">latest</span>   <span class="o">*</span><span class="p">:</span><span class="mi">8432</span><span class="o">-&gt;</span><span class="mi">3000</span><span class="o">/</span><span class="n">tcp</span>
+<span class="n">root</span><span class="nd">@swarm1</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">node</span><span class="o">-</span><span class="n">redis</span><span class="o">-</span><span class="n">example</span><span class="c1"># docker stack rm redis-node</span>
+<span class="n">Removing</span> <span class="n">service</span> <span class="n">redis</span><span class="o">-</span><span class="n">node_redis</span>
+<span class="n">Removing</span> <span class="n">service</span> <span class="n">redis</span><span class="o">-</span><span class="n">node_web</span>
+<span class="n">Removing</span> <span class="n">network</span> <span class="n">redis</span><span class="o">-</span><span class="n">node_appnet1</span>
+</pre></div>
+</div>
+</section>
+<section id="instalar-herramienta-portainer">
+<h2>Instalar herramienta portainer<a class="headerlink" href="#instalar-herramienta-portainer" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">L</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">downloads</span><span class="o">.</span><span class="n">portainer</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">portainer</span><span class="o">-</span><span class="n">agent</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">yml</span> <span class="o">-</span><span class="n">o</span> <span class="n">portainer</span><span class="o">-</span><span class="n">agent</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">yml</span>
+<span class="n">docker</span> <span class="n">stack</span> <span class="n">deploy</span> <span class="o">--</span><span class="n">compose</span><span class="o">-</span><span class="n">file</span><span class="o">=</span><span class="n">portainer</span><span class="o">-</span><span class="n">agent</span><span class="o">-</span><span class="n">stack</span><span class="o">.</span><span class="n">yml</span> <span class="n">portainer</span>
+</pre></div>
+</div>
+</section>
+<section id="instalar-herramenta-swarmpit">
+<h2>Instalar herramenta swarmpit<a class="headerlink" href="#instalar-herramenta-swarmpit" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">swarmpit</span><span class="o">/</span><span class="n">swarmpit</span>
+<span class="n">docker</span> <span class="n">stack</span> <span class="n">deploy</span> <span class="o">-</span><span class="n">c</span> <span class="n">swarmpit</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="n">swarmpit</span>
+</pre></div>
+</div>
+</section>
+<section id="incluir-stacks-desde-la-aplicacion-p-e-portainer">
+<h2>Incluir stacks desde la aplicación p.e. portainer<a class="headerlink" href="#incluir-stacks-desde-la-aplicacion-p-e-portainer" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">version</span><span class="p">:</span> <span class="s1">'3.1'</span>
+<span class="n">services</span><span class="p">:</span>
+
+ <span class="n">wordpress</span><span class="p">:</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">wordpress</span>
+  <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
+  <span class="n">ports</span><span class="p">:</span>
+   <span class="o">-</span> <span class="mi">8080</span><span class="p">:</span><span class="mi">80</span>
+  <span class="n">environment</span><span class="p">:</span>
+   <span class="n">WORDPRESS_DB_HOST</span><span class="p">:</span> <span class="n">db</span>
+   <span class="n">WORDPRESS_DB_USER</span><span class="p">:</span> <span class="n">exampleuser</span>
+   <span class="n">WORDPRESS_DB_PASSWORD</span><span class="p">:</span> <span class="n">examplepass</span>
+   <span class="n">WORDPRESS_DB_NAME</span><span class="p">:</span> <span class="n">expampledb</span>
+
+ <span class="n">db</span><span class="p">:</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">mysql</span><span class="p">:</span><span class="mf">5.7</span>
+  <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
+  <span class="n">environment</span><span class="p">:</span>
+    <span class="n">MYSQL_DATABASE</span><span class="p">:</span> <span class="n">exampledb</span>
+    <span class="n">MYSQL_USER</span><span class="p">:</span> <span class="n">exampleuser</span>
+    <span class="n">MYSQL_PASSWORD</span><span class="p">:</span> <span class="n">examplepass</span>
+    <span class="n">MYSQL_RANDOM_ROOT_PASSWORD</span><span class="p">:</span> <span class="s1">'1'</span>
+</pre></div>
+</div>
+<p>También se puede ejecutar el stack desde línea de comandos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">stack</span> <span class="n">deploy</span> <span class="o">-</span><span class="n">c</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">-</span><span class="n">wp</span><span class="o">.</span><span class="n">yml</span> <span class="n">wordpress</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="4-readme.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">OPENSHIFT</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, jclmon |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>. |
+            <a class="muted-link" href="../_sources/usage/5-readme.rst.txt"
+               rel="nofollow">
+              Mostrar el código
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contenidos
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Docker-compose y Docker Swarm</a><ul>
+<li><a class="reference internal" href="#importar-maquina-en-windows-10">Importar máquina en windows 10</a></li>
+<li><a class="reference internal" href="#crear-el-manager">Crear el manager</a></li>
+<li><a class="reference internal" href="#crear-worker">Crear worker</a><ul>
+<li><a class="reference internal" href="#ver-nodos">Ver nodos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#instalar-docker-compose-en-la-maquina">Instalar docker-compose en la máquina</a></li>
+<li><a class="reference internal" href="#crear-fichero-docker-compose-yml">Crear fichero docker-compose.yml</a></li>
+<li><a class="reference internal" href="#probar-compose">Probar compose</a></li>
+<li><a class="reference internal" href="#levantar-compose-en-cloud">Levantar compose en cloud</a></li>
+<li><a class="reference internal" href="#instalar-herramienta-portainer">Instalar herramienta portainer</a></li>
+<li><a class="reference internal" href="#instalar-herramenta-swarmpit">Instalar herramenta swarmpit</a></li>
+<li><a class="reference internal" href="#incluir-stacks-desde-la-aplicacion-p-e-portainer">Incluir stacks desde la aplicación p.e. portainer</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js"></script>
+    <script src="../_static/translations.js"></script>
+    </body>
+</html>

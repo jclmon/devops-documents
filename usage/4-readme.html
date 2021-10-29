@@ -1,0 +1,1246 @@
+<!doctype html>
+<html class="no-js" lang="es">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Búsqueda" href="../search.html" /><link rel="next" title="Docker-compose y Docker Swarm" href="5-readme.html" /><link rel="prev" title="KUBERNETES" href="3-readme.html" />
+
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+        <title>OPENSHIFT - documentación de DOCKER, KUBERNETES, OPENSHIFT, ISTIO -</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">documentación de DOCKER, KUBERNETES, OPENSHIFT, ISTIO - </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">documentación de DOCKER, KUBERNETES, OPENSHIFT, ISTIO - </span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Búsqueda name="q" aria-label="Búsqueda">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1-readme.html">DOCKER, KUBERNETES, OPENSHIFT, ISTIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-readme.html#docker">DOCKER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-readme.html">ISTIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-readme.html">KUBERNETES</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">OPENSHIFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-readme.html">Docker-compose y Docker Swarm</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="openshift">
+<h1>OPENSHIFT<a class="headerlink" href="#openshift" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Red Hat OpenShift es la plataforma de Kubernetes empresarial líder en el
+sector*, la cual se diseñó especialmente para formar parte de una
+<a class="reference external" href="https://www.redhat.com/es/products/open-hybrid-cloud">estrategia de nube híbrida
+abierta</a>.
+Gracias a que ofrece operaciones automatizadas integrales, una
+experiencia uniforme en todos los entornos y la implementación de
+autoservicio para los desarrolladores, los equipos pueden trabajar en
+conjunto para llevar las ideas de la etapa de desarrollo a la de
+producción de manera más eficiente.</p>
+<section id="creando-el-cluster-openshift">
+<h2>Creando el cluster openshift<a class="headerlink" href="#creando-el-cluster-openshift" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La inicialización del clúster crea una nueva máquina en nuestro
+virtualbox e instala en ella todas las aplicaciones necesarias para que
+funcione openshift (la versión que se va a instalar el openshift 3.11),
+la instrucción que tenemos que ejecutar para que se empiece a construir
+el clúster es la siguiente (el proceso dura algunos minutos):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ minishift start --vm-driver virtualbox
+minishift start
+-- Starting profile 'minishift'
+...
+OpenShift server started.
+
+The server is accessible via web console at:
+    https://192.168.99.100:8443/console
+
+You are logged in as:
+    User:     developer
+    Password: &lt;any value&gt;
+</pre></div>
+</div>
+<p>To login as administrator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">oc</span> <span class="n">login</span> <span class="o">-</span><span class="n">u</span> <span class="n">system</span><span class="p">:</span><span class="n">admin</span>
+</pre></div>
+</div>
+</section>
+<section id="gestionando-el-cluster-openshift">
+<h2>Gestionando el cluster openshift<a class="headerlink" href="#gestionando-el-cluster-openshift" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="para-detener-la-maquina-virtual-que-hemos-creado">
+<h3>Para detener la máquina virtual que hemos creado:<a class="headerlink" href="#para-detener-la-maquina-virtual-que-hemos-creado" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ minishift stop
+</pre></div>
+</div>
+</section>
+<section id="en-cualquier-otro-momento-podemos-seguir-trabajando-con-el-cluster">
+<h3>En cualquier otro momento podemos seguir trabajando con el cluster:<a class="headerlink" href="#en-cualquier-otro-momento-podemos-seguir-trabajando-con-el-cluster" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ minishift start
+</pre></div>
+</div>
+</section>
+<section id="para-borrar-la-maquina-virtual">
+<h3>Para borrar la máquina virtual:<a class="headerlink" href="#para-borrar-la-maquina-virtual" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ minishift delete
+</pre></div>
+</div>
+</section>
+</section>
+<section id="despliegue-de-la-primera-aplicacion-en-openshift">
+<h2>Despliegue de la primera aplicación en Openshift<a class="headerlink" href="#despliegue-de-la-primera-aplicacion-en-openshift" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><p>Vamos a crear una aplicación web con un servidor web apache2. Nuestra</p></li>
+</ul>
+<p>aplicación tendrá ficheros html y php.</p>
+<ul class="simple">
+<li><p>Nuestra aplicación la tenemos en un repositorio de GitHub</p></li>
+</ul>
+<p>(<a class="reference external" href="https://github.com/josedom24/html_for_openshift">https://github.com/josedom24/html_for_openshift</a>)</p>
+<ul class="simple">
+<li><p>Vamos a crear nuestra aplicación usando source2image: al crear la</p></li>
+</ul>
+<p>aplicación vamos a escoger una imagen con apache2 y php y vamos a
+indicar nuestro repositorio con el código, a partir de esta información
+se va a crear una imagen docker con apache2, php y nuestro código, que
+va a servir para desplegar la aplicación.</p>
+<section id="pasos-a-seguir">
+<h3>Pasos a seguir<a class="headerlink" href="#pasos-a-seguir" title="Enlazar permanentemente con este título">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Del catálogo elegimos la imagen de php y elegimos la versión de php
+con la que vamos a trabajar.</p></li>
+<li><p>Indicamos un nombre y el repositorio donde tenemos nuestro código.</p></li>
+<li><p>Se va a crear un build: o Se crea un pod a partir de la imagen de
+apache2 seleccionada. o Se inyecta en ese pod el código del
+repositorio. o Y se crea una nueva imagen con apache2 y nuestra
+aplicación.</p></li>
+<li><p>A partir de la imagen creada: o Se crea un deployment que crear un
+pod con la aplicación. o Se crea un servicio de acceso a la
+aplicación o Y se crea una ruta de acceso.</p></li>
+<li><p>Ya tenemos desplegada nuestra aplicación y podemos acceder a ella.</p></li>
+</ol>
+</section>
+<section id="recursos-que-nos-ofrece-openshift">
+<h3>Recursos que nos ofrece Openshift<a class="headerlink" href="#recursos-que-nos-ofrece-openshift" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>Web Console: Aplicación web que nos permite trabajar con nuestros</p></li>
+</ul>
+<p>recursos de OpenShift</p>
+<ul class="simple">
+<li><p>Catálogo de servicios: Conjunto de imágenes y plantillas bases. A</p></li>
+</ul>
+<p>partir de ellas podemos construir (builds) nuevas imágenes con s2i.</p>
+<ul class="simple">
+<li><p>Proyectos: Permiten a los usuarios organizar y controlar sus</p></li>
+</ul>
+<p>aplicaciones.</p>
+<ul class="simple">
+<li><p>Aplicación: Nuestra aplicación es una aplicación Kubernetes, por los</p></li>
+</ul>
+<p>están formada por distintos recursos: deployment, pods, service, routes</p>
+<ul class="simple">
+<li><p>Builds: Es el proceso por el que se crea la imagen desde la que se va</p></li>
+</ul>
+<p>a crear nuestra aplicación. Tenemos muchas estrategias: o Desde una
+imagen, desde un fichero Dockerfile, …</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>o   source2image
+
+o   Pipeline de Jenkins
+
+o   …
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Registro de imágenes: Las imágenes que se crean en los builds se</p></li>
+</ul>
+<p>guardan en un registro interno.</p>
+<ul class="simple">
+<li><p>Deployment: Define las características de los contenedores que se van</p></li>
+</ul>
+<p>a crear para cada aplicación.</p>
+<ul class="simple">
+<li><p>Pods: Accedemos a la gestión de los pods que se han creado para</p></li>
+</ul>
+<p>nuestra aplicación.</p>
+<ul class="simple">
+<li><p>Services: Tenemos información del recurso servicio que nos permite</p></li>
+</ul>
+<p>acceder a nuestra aplicación.</p>
+<ul class="simple">
+<li><p>Routes: Se asocia automática una ruta (nombre) para acceder a cada</p></li>
+</ul>
+<p>aplicación.</p>
+<ul class="simple">
+<li><p>Monitorig: Tenemos acceso a herramienta para monitorizar el uso de</p></li>
+</ul>
+<p>recurso de nuestra aplicación.</p>
+<ul class="simple">
+<li><p>cli oc: Herramienta de línea de comandos que nos permite trabajar con</p></li>
+</ul>
+<p>nuestros recursos de OpenShift</p>
+</section>
+<section id="tolerancia-a-fallos-y-balanceo-de-carga">
+<h3>Tolerancia a fallos y balanceo de carga<a class="headerlink" href="#tolerancia-a-fallos-y-balanceo-de-carga" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Openshift va a asegurar que en todo momento se esté ejecutando nuestra
+aplicación. Para ello asegura la ejecución de los pods que hayamos
+indicado para ejecutar la aplicación. Antes de ver un ejemplo de
+tolerancia a fallos, vamos a señalar algunas funcionalidades que podemos
+obtener de los pods: En la ruta Aplications-&gt;Pods podemos escoger un
+determinado Pod, y nos llevará a la información del pod, entre lo más
+interesante podemos señalar: • Details: Toda la información del pod. •
+Logs: Terminal donde podemos ver en tiempo real los logs que se producen
+en el pod • Terminal: Podemos acceder a la terminal del pod. Nota: Si el
+pod está compuesto por varios contenedores, podremos elegir el
+contenedor al que queremos acceder de forma sencilla. Vemos un ejemplo
+de tolerancia a fallos: 1. Vamos a borrar el pod, eligiendo la opción
+Delete del botón Actions. 2. Inmediatamente se crea un nuevo pod que
+sustituye al anterior.</p>
+</section>
+<section id="escalabilidad">
+<h3>Escalabilidad<a class="headerlink" href="#escalabilidad" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En cualquier momento se puede escalar de forma horizontal (crear más
+pods en un despliegue o eliminarlos) los pods de un despliegue. En todo
+momento las peticiones a nuestra aplicación se balancean entre los pods
+que tengamos ejecutando. Antes de ver un ejemplo de tolerancia a fallos,
+vamos a señalar algunas funcionalidades que podemos obtener de los
+deploy: En la ruta Aplications-&gt;Deployments podemos escoger un
+determinado despliegue y a continuación el número de despliegue, y nos
+llevará a una página con la información de ese despliegue, entre lo más
+interesante podemos señalar:</p>
+<ul class="simple">
+<li><p>Details: Toda la información del despliegue.</p></li>
+<li><p>Metrics: Las métricas (uso de memoria y de CPU) del despliegue.</p></li>
+<li><p>Logs: Terminal donde podemos ver en tiempo real los logs que se</p></li>
+</ul>
+<p>producen en el despliegue.</p>
+<p>Veamos un ejemplo de escalado manual: 1. Desde la pestaña Details
+podemos observar una grágica donde vemos el número de pods actuales, con
+dos flechas que nos permiten el escalado.</p>
+<ol class="arabic simple" start="2">
+<li><p>Podemos aumentar y disminuir el número de pods interactuando con las
+dos flechas y podemos observar cómo se crean y eliminan los pods.</p></li>
+</ol>
+</section>
+<section id="balanceo-de-carga">
+<h3>Balanceo de carga<a class="headerlink" href="#balanceo-de-carga" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Crear tres pods en nuestro despliegue y acceder al programa info.php que
+simplemente nos muestra el nombre del servidor en el que se está
+ejecutando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php echo "Servidor:"; echo gethostname();echo "\n"; ?&gt;
+Desde una línea de comando podemos simular un número de peticiones a nuestra aplicación y veremos cómo se está balanceando la carga:
+for i in `seq 1 100`; do curl http://prueba-myproyecto1.7e14.starter-us-west-2.openshiftapps.com/info.php; done
+Servidor:prueba-1-pb2sj
+Servidor:prueba-1-vcm92
+Servidor:prueba-1-l9zvt
+Servidor:prueba-1-pb2sj
+...
+</pre></div>
+</div>
+<p>Después de escalar, con tres Pods activos: Se ejecuta la línea de
+comando para realizar las 100 peticiones y se observa el balanceo.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[root@srvdev ~]# for i in `seq 1 100`; do curl http://ejemplo1-myproject.192.168.2.60.nip.io/info.php; done
+Servidor:ejemplo1-1-qzk72
+Servidor:ejemplo1-1-nqc9j
+Servidor:ejemplo1-1-8flgl
+Servidor:ejemplo1-1-qzk72
+Servidor:ejemplo1-1-nqc9j
+Servidor:ejemplo1-1-8flgl
+Servidor:ejemplo1-1-qzk72
+Servidor:ejemplo1-1-nqc9j
+Servidor:ejemplo1-1-8flgl
+…
+</pre></div>
+</div>
+</section>
+</section>
+<section id="despliegue-continuo-y-rollback-de-nuestra-aplicacion-openshift">
+<h2>Despliegue continuo y rollback de nuestra aplicación Openshift<a class="headerlink" href="#despliegue-continuo-y-rollback-de-nuestra-aplicacion-openshift" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Actualizaciones continúas El ciclo de vida del desarrollo de nuestra
+aplicación sería el siguiente:</p>
+<ol class="arabic simple">
+<li><p>Modificamos el código de nuestra aplicación, y guardamos los cambios
+en el repositorio.</p></li>
+<li><p>Desde openshift realizamos un nuevo build, que construye una nueva
+imagen con la aplicación modificada.</p></li>
+<li><p>A continuación, de forma automática, se realizará un nuevo
+deployment, que borrará los pods antiguos y creará nuevos desde la
+nueva versión de la imagen.</p></li>
+</ol>
+<p>Rollback de nuestra aplicación en OpenShift En cualquier momento podemos
+desplegar un deployment anterior, para volver a una versión anterior de
+nuestra aplicación.</p>
+<section id="despliegue-continuo-en-openshift">
+<h3>Despliegue continuo en Openshift<a class="headerlink" href="#despliegue-continuo-en-openshift" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Despliegue continuo: Copiamos el webhook de nuestra aplicación, lo
+incorporamos al proyecto de github en la pestaña de configuración, usar
+content type json: Tal y como se realiza el push de git con los cambios
+se dispara automáticamente el build: Para publicar nuestra ip interna y
+que github tenga acceso al webhook se puede utilizar <a class="reference external" href="https://ngrok.com/">https://ngrok.com/</a></p>
+</section>
+<section id="autoescalado-escalado-automatico-en-openshift">
+<h3>Autoescalado, escalado automático en Openshift<a class="headerlink" href="#autoescalado-escalado-automatico-en-openshift" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El autoescalado en OpenShift es una característica muy interesante. Con
+el autoescalado podemos tener un número mínimo de pods de nuestra
+aplicación y queremos que cuando esa “máquina” llegue a una determinada
+carga se cree un pod nuevo. Con ello realizamos un escalado horizontal y
+la carga de peticiones que estamos respondiendo se reparte entre más
+contenedores. En el momento en que baje la carga de peticiones se
+eliminaran los pods que no son necesarios. Actualmente el autoescalado
+se realiza dependiendo del uso del CPU, aunque también se está
+desarrollando la posibilidad de que la utilización de memoria sea el
+factor que realice el autoescalado.</p>
+</section>
+<section id="autoescalado-de-un-despliegue">
+<h3>Autoescalado de un despliegue<a class="headerlink" href="#autoescalado-de-un-despliegue" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para crear el auescalado de un despliegue elegimos de la opción
+Deployments el despliegue que nos interesa y escogemos en el botón
+Actions la opción Add Autoescaler:</p>
+<p>Indicamos los siguientes datos:</p>
+<ol class="arabic simple">
+<li><p>El número mínimo de pods que vamos a tener de nuestra aplicación.</p></li>
+<li><p>El número máximo de pods que vamos a tener de nuestra aplicación.</p></li>
+<li><p>El porcentaje de utilización de la CPU que se va a considerar para
+crear o eliminar un pod (Nota: Hemos puesto un valor pequeño para la
+prueba que vamos a realizar).</p></li>
+</ol>
+<p>Como podemos observar en un principio tenemos un sólo pod: Si empezamos
+a hacer peticiones a nuestra aplicación, por ejemplo hacemos 50
+peticiones concurrentes durante un minuto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ab</span> <span class="o">-</span><span class="n">t</span> <span class="mi">60</span> <span class="o">-</span><span class="n">c</span> <span class="mi">50</span> <span class="o">-</span><span class="n">k</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">prueba</span><span class="o">-</span><span class="n">myproyecto1</span><span class="mf">.7e14</span><span class="o">.</span><span class="n">starter</span><span class="o">-</span><span class="n">us</span><span class="o">-</span><span class="n">west</span><span class="o">-</span><span class="mf">2.</span><span class="n">openshiftapps</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>ab es del paquete apache2-utils para hacer pruebas de peticiones Pasado
+unos segundos observaremos como de forma automática se crean nuevos pods
+de nuestra aplicación, hasta llegar al límite superior indicado:</p>
+</section>
+</section>
+<section id="introduccion-a-la-linea-de-comandos">
+<h2>Introducción a la línea de comandos<a class="headerlink" href="#introduccion-a-la-linea-de-comandos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Hasta ahora hemos manejado los recursos de nuestro cluster utilizando la
+página web de Openshift Online, pero también tenemos a nuestra
+disposición un comando CLI (command line interface) oc que podemos usar
+desde la línea de comandos. Instalación de la utilidad de línea de
+comandos oc Podemos bajarnos la última versión del cliente desde la
+página de descargas. Y siguiendo las instrucciones que encontramos en
+Get Started with the CLI
+(<a class="reference external" href="https://www.openshift.com/blog/installing-oc-tools-windows">https://www.openshift.com/blog/installing-oc-tools-windows</a>) podemos
+instalar la herramienta en los distintos sistemas operativos. Por
+ejemplo para Linux Debian/Ubuntu, descomprimimos el fichero y copiamos
+el ejecutable oc en un directorio que este en el PATH. Conectando a
+nuestra cuenta de OpenShift Una vez instalado, debemos conectarnos a
+nuestro clúster. Para ello vamos a utilizar un token de acceso. Lo más
+sencillo es obtener el token desde la página web eligiendo la opción
+Copy Login Command desde las opciones de tu usuario. Pegamos en la línea
+de comando y obtenemos el comando para conectarnos a nuestro clúster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">oc</span> <span class="n">login</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">starter</span><span class="o">-</span><span class="n">us</span><span class="o">-</span><span class="n">west</span><span class="o">-</span><span class="mf">2.</span><span class="n">openshift</span><span class="o">.</span><span class="n">com</span> <span class="o">--</span><span class="n">token</span><span class="o">=</span><span class="n">xxxxxxxxxxxxxxx</span><span class="o">.....</span>
+</pre></div>
+</div>
+<p>Cuando nos conectamos por primera vez se crea un fichero de
+configuración en ~/.kube/config con la información de acceso al clúster.</p>
+<ul class="simple">
+<li><p>Creación de un nuevo proyecto</p></li>
+</ul>
+<p>Si accedemos al clúster y no tenemos creado un proyecto tenemos que
+ejecutar la siguiente instrucción para crear uno:
+<code class="docutils literal notranslate"><span class="pre">oc</span> <span class="pre">new-project</span> <span class="pre">miproyecto1</span></code> Y podemos comprobar el estado del clúster
+con:
+<code class="docutils literal notranslate"><span class="pre">oc</span> <span class="pre">status</span>  <span class="pre">In</span> <span class="pre">project</span> <span class="pre">miproyecto1</span> <span class="pre">on</span> <span class="pre">server</span> <span class="pre">https://api.starter-us-west-2.openshift.com:443</span> <span class="pre">You</span> <span class="pre">have</span> <span class="pre">no</span> <span class="pre">services,</span> <span class="pre">deployment</span> <span class="pre">configs,</span> <span class="pre">or</span> <span class="pre">build</span> <span class="pre">configs.</span> <span class="pre">Run</span> <span class="pre">'oc</span> <span class="pre">new-app'</span> <span class="pre">to</span> <span class="pre">create</span> <span class="pre">an</span> <span class="pre">application.</span></code></p>
+<section id="despliegue-de-una-aplicacion-con-oc">
+<h3>Despliegue de una aplicación con OC<a class="headerlink" href="#despliegue-de-una-aplicacion-con-oc" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Una vez que nos hemos conectado a nuestro cluster y hemos creado un
+proyecto, vamos a crear nuestra aplicación. En este caso, volvemos a
+desplegar la misma aplicación que en el ejemplo anterior, usando
+source2image. Para ver todos recursos del catálogo que podemos utilizar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc new-app –list
+</pre></div>
+</div>
+<p>Seguimos los mismos pasos, del catálogo elegimos la imagen de php y la
+versión, para buscar imágenes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc new-app --search php
+</pre></div>
+</div>
+<p>Las image stream son las que tiene disponibles Openshift A continuación
+creamos la nueva aplicación indicando la imagen, el repositorio donde
+esta el código e indicando un nombre:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc new-app php:7.1~https://github.com/josedom24/html_for_openshift.git --name prueba
+</pre></div>
+</div>
+<p>Podemos ver el estado de nuestra aplicación ejecutando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc status
+In project miproyecto1 on server https://api.starter-us-west-2.openshift.com:443
+
+svc/prueba - 172.30.27.139 ports 8080, 8443
+  dc/prueba deploys istag/prueba:latest &lt;-
+    bc/prueba source builds https://github.com/josedom24/html_for_openshift.git on openshift/php:7.1
+    deployment #1 deployed 37 seconds ago - 1 pod
+</pre></div>
+</div>
+<p>Como podemos observar se ha creado un build:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc get bc
+NAME      TYPE      FROM      LATEST
+prueba    Source    Git       1
+$ oc describe bc/prueba
+</pre></div>
+</div>
+<p>Se ha creado un despliegue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc get dc
+NAME      REVISION   DESIRED   CURRENT   TRIGGERED BY
+prueba    1          1         1         config,image(prueba:latest)
+$ oc describe dc/prueba
+</pre></div>
+</div>
+<p>Y podemos ver los pods que se han creado:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc get pods
+NAME             READY     STATUS      RESTARTS   AGE
+prueba-1-build   0/1       Completed   0          5m
+prueba-1-n6lmz   1/1       Running     0          4m
+$ oc describe pod/prueba-1-n6lmz
+</pre></div>
+</div>
+<p>Para ver los logs de un build:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc logs bc/prueba
+</pre></div>
+</div>
+<p>Para ver los logs de un determinado despliegue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc logs dc/prueba
+</pre></div>
+</div>
+<p>Y, por ejemplo, para ejecutar un comando en un determinado pod:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc exec prueba-1-n6lmz  -it /bin/bash
+</pre></div>
+</div>
+<p>También podemos ejecutar el siguiente comando para acceder al pod:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc rsh prueba-1-n6lmz
+</pre></div>
+</div>
+<p>Accediendo a nuestra aplicación Cuando hemos creado una aplicación se ha
+creado un servicio:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc get svc
+NAME      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+prueba    ClusterIP   172.30.27.139   &lt;none&gt;        8080/TCP,8443/TCP   10m
+</pre></div>
+</div>
+<p>Pero debemos crear una ruta para poder acceder a dicha aplicación, para
+ello:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc expose svc/prueba
+route.route.openshift.io/prueba exposed
+$ oc get routes
+NAME      HOST/PORT                                                     PATH      SERVICES   PORT       TERMINATION   WILDCARD
+prueba    prueba-miproyecto1.7e14.starter-us-west-2.openshiftapps.com             prueba     8080-tcp                 None
+</pre></div>
+</div>
+<p>Y ya podemos acceder a la aplicación usando la URL:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>prueba-miproyecto1.7e14.starter-us-west-2.openshiftapps.com.
+Operaciones avanzadas con OC
+Tolerancia a fallos
+Si borramos un pods, se va a crear inmediatamente otro para que la aplicación siga funcionando:
+$ oc get pods
+NAME             READY     STATUS      RESTARTS   AGE
+prueba-1-build   0/1       Completed   0          18m
+prueba-1-n6lmz   1/1       Running     0          17m
+$ oc delete pod/prueba-1-n6lmz
+pod "prueba-1-n6lmz" deleted
+$ oc get pods
+NAME             READY     STATUS      RESTARTS   AGE
+prueba-1-b4s25   1/1       Running     0          10s
+prueba-1-build   0/1       Completed   0          18m
+</pre></div>
+</div>
+</section>
+<section id="escalabilidad-1">
+<span id="id1"></span><h3>Escalabilidad<a class="headerlink" href="#escalabilidad-1" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En cualquier momento se puede escalar de forma horizontal (crear más
+pods en un despliegue o eliminarlos) los pods de un despliegue. En todo
+momento las peticiones a nuestra aplicación se balancean entre los pods
+que tengamos ejecutando.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc scale dc prueba --replicas=3
+deploymentconfig.apps.openshift.io/prueba scaled
+$ oc get pods -o wide
+NAME             READY     STATUS      RESTARTS   AGE       IP               NODE                                          NOMINATED NODE
+prueba-1-b4s25   1/1       Running     0          1m        10.130.22.98     ip-172-31-56-230.us-west-2.compute.internal   &lt;none&gt;
+prueba-1-build   0/1       Completed   0          20m       10.129.115.115   ip-172-31-51-92.us-west-2.compute.internal    &lt;none&gt;
+prueba-1-sghr9   1/1       Running     0          20s       10.128.27.215    ip-172-31-55-160.us-west-2.compute.internal   &lt;none&gt;
+prueba-1-w4b4p   1/1       Running     0          20s       10.129.11.160    ip-172-31-52-89.us-west-2.compute.internal    &lt;none&gt;
+</pre></div>
+</div>
+<p>Donde vemos en que nodo se está ejecutando cada pod, y comprobamos el
+balanceo de carga:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for i in `seq 1 100`; do curl http://prueba-miproyecto1.7e14.starter-us-west-2.openshiftapps.com/info.php; done
+Servidor:prueba-1-sghr9
+Servidor:prueba-1-w4b4p
+Servidor:prueba-1-b4s25
+...
+</pre></div>
+</div>
+</section>
+<section id="actualizaciones-continuas">
+<h3>Actualizaciones continúas<a class="headerlink" href="#actualizaciones-continuas" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Modificamos el código de nuestra aplicación, y guardamos los cambios en
+el repositorio. Desde openshift realizamos un nuevo build, que construye
+una nueva imagen con la aplicación modificada:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc start-build bc/prueba
+build.build.openshift.io/prueba-2 started
+$ oc get bc
+NAME      TYPE      FROM      LATEST
+prueba    Source    Git       2
+</pre></div>
+</div>
+<p>A continuación, de forma automática, se realizará un nuevo deployment,
+que borrará los pods antiguos y creará nuevos desde la nueva versión de
+la imagen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc get dc
+NAME      REVISION   DESIRED   CURRENT   TRIGGERED BY
+prueba    2          3         2         config,image(prueba:latest)
+</pre></div>
+</div>
+<p>Rollback de nuestra aplicación Para volver a una versión anterior de
+nuestra aplicación:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc rollout undo dc/prueba
+deploymentconfig.apps.openshift.io/prueba rolled back
+$ oc get dc
+NAME      REVISION   DESIRED   CURRENT   TRIGGERED BY
+prueba    3          3         1         config
+</pre></div>
+</div>
+</section>
+<section id="autoescalado">
+<h3>Autoescalado<a class="headerlink" href="#autoescalado" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para crear un autoescalado en un despliegue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc autoscale dc/prueba --min 1 --max 3 --cpu-percent=20
+horizontalpodautoscaler.autoscaling/prueba autoscaled
+$ oc get hpa
+NAME      REFERENCE                 TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+prueba    DeploymentConfig/prueba   5%/20%    1         3         3          34s
+$ oc describe hpa/prueba
+</pre></div>
+</div>
+</section>
+</section>
+<section id="despliegue-de-aplicaciones-python-con-oc">
+<h2>Despliegue de aplicaciones Python con OC<a class="headerlink" href="#despliegue-de-aplicaciones-python-con-oc" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Vamos a desplegar una aplicación python que tenemos guardada en el
+repositorio: <a class="reference external" href="https://github.com/josedom24/python_for_openshift">https://github.com/josedom24/python_for_openshift</a>
+Despliegue desde la consola web Para realizar el despliegue seguimos los
+siguientes pasos desde la consola web:</p>
+<ol class="arabic simple">
+<li><p>Al crear nuestra aplicación, escogemos en el catálogo la opción de
+imagen python.</p></li>
+<li><p>Escogemos la versión de python e indicamos el repositorio de nuestra
+aplicación.</p></li>
+<li><p>Durante el despliegue se van a instalar los módulos que encuentre en
+el fichero requirements.txt.</p></li>
+<li><p>El contenedor que vamos a crear ejecuta por defecto una aplicación
+qie se llama app.py.</p></li>
+</ol>
+<p>Despliegue con el cliente de comandos oc Borramos el proyecto anterior,
+y creamos uno nuevo. Y a continuación vamos a realizar el despliegue de
+la aplicación python de nuevo. Lo primero es buscar las imágenes python
+que tenemos en el catálogo: <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">oc</span> <span class="pre">new-app</span> <span class="pre">--search</span> <span class="pre">python</span></code> A
+continuación creamos la aplicación:
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">oc</span> <span class="pre">new-app</span> <span class="pre">python:3.6~https://github.com/josedom24/python_for_openshift</span> <span class="pre">--name</span> <span class="pre">app-python</span> <span class="pre">Podemos</span> <span class="pre">ver</span> <span class="pre">el</span> <span class="pre">estado</span> <span class="pre">de</span> <span class="pre">nuestra</span> <span class="pre">aplicación</span> <span class="pre">ejecutando:</span> <span class="pre">$</span> <span class="pre">oc</span> <span class="pre">status</span> <span class="pre">In</span> <span class="pre">project</span> <span class="pre">miproyecto1</span> <span class="pre">on</span> <span class="pre">server</span> <span class="pre">https://api.starter-us-west-2.openshift.com:443</span> <span class="pre">svc/app-python</span> <span class="pre">-</span> <span class="pre">172.30.85.230:8080</span>   <span class="pre">dc/app-python</span> <span class="pre">deploys</span> <span class="pre">istag/app-python:latest</span> <span class="pre">&lt;-</span>     <span class="pre">bc/app-python</span> <span class="pre">source</span> <span class="pre">builds</span> <span class="pre">https://github.com/josedom24/python_for_openshift</span> <span class="pre">on</span> <span class="pre">openshift/python:3.6</span>      <span class="pre">deployment</span> <span class="pre">#1</span> <span class="pre">deployed</span> <span class="pre">16</span> <span class="pre">seconds</span> <span class="pre">ago</span> <span class="pre">-</span> <span class="pre">1</span> <span class="pre">pod</span></code></p>
+<p>Para terminar tenemos que crear la ruta de acceso a la aplicación:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc expose svc/app-python
+route.route.openshift.io/app-python exposed
+$ oc get route
+NAME         HOST/PORT                                                         PATH      SERVICES     PORT       TERMINATION   WILDCARD
+app-python   app-python-miproyecto1.7e14.starter-us-west-2.openshiftapps.com             app-python   8080-tcp                 None
+</pre></div>
+</div>
+<p>Y accediendo a la URL podremos ver nuestra aplicación. Despliegue de
+aplicaciones PHP con OC Vamos a instalar un CMS PHP que utiliza una base
+de datos Sqlite (phpSQLiteCMS). Para ello vamos a utilizar el código de
+la aplicación que se encuentra en el repositorio:
+<a class="reference external" href="https://github.com/ilosuna/phpsqlitecms">https://github.com/ilosuna/phpsqlitecms</a> Despliegue desde la consola web</p>
+<p>Vamos a seguir los siguientes pasos desde la consola web:</p>
+<ol class="arabic simple">
+<li><p>Al crear nuestra aplicación, escogemos en el catálogo la opción de
+imagen PHP.</p></li>
+<li><p>Escogemos la versión de PHP e indicamos el repositorio de nuestra
+aplicación.</p></li>
+<li><p>Durante el despliegue se van a instalar los módulos que encuentre en
+el fichero composer.json.</p></li>
+<li><p>El despliegue de la aplicación, creará un build que construirá una
+imagen con nuestra aplicación, posteriormente creará un deployment,
+encargado de crear los pods, y finalmente se creará un servicio y una
+ruta de acceso a la aplicación. Despliegue con el cliente de comandos
+oc</p></li>
+</ol>
+<p>Borramos el proyecto anterior, y creamos uno nuevo. Y a continuación
+vamos a realizar el despliegue de la aplicación php de nuevo. Para ello
+ejecutamos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc new-app php:7.1~https://github.com/ilosuna/phpsqlitecms --name appphp
+Podemos ver el estado de nuestra aplicación ejecutando:
+$ oc status
+In project miproyecto1 on server https://api.starter-us-west-2.openshift.com:443
+svc/appphp - 172.30.244.6 ports 8080, 8443
+  dc/appphp deploys istag/appphp:latest &lt;-
+    bc/appphp source builds https://github.com/ilosuna/phpsqlitecms on openshift/php:7.1
+    deployment #1 deployed about a minute ago - 1 pod
+Para terminar tenemos que crear la ruta de acceso a la aplicación:
+$ oc expose svc/appphp
+route.route.openshift.io/appphp exposed
+$ oc get routes
+NAME      HOST/PORT                                                     PATH        SERVICES   PORT       TERMINATION   WILDCARD
+appphp    appphp-miproyecto1.7e14.starter-us-west-2.openshiftapps.com             appphp     8080-tcp                 None
+</pre></div>
+</div>
+<p>Y accediendo a la URL podremos ver nuestra aplicación. Los contenedores
+son efímeros Como hemos comentado los contenedores son efímeros, la
+información que se guarda en ellos se pierde al eliminar el contenedor,
+además si tenemos varias replicas de una misma aplicación (varios pods)
+la información que se guarda en cada una de ellas es independiente.
+Vamos a comprobarlo:</p>
+<ol class="arabic simple">
+<li><p>En el directorio /cms/data se encuentran las bases de datos de la
+aplicación.</p></li>
+<li><p>Cuando escalemos nuestra aplicación se va a crear otro pod con la
+base de datos inicial, en este nuevo pod no tenemos el mismo
+contenido que el original.</p></li>
+<li><p>Si realizamos un nuevo despliegue los nuevos pods perderán los datos
+de la base de datos.</p></li>
+<li><p>Necesitamos volúmenes persistentes</p></li>
+</ol>
+</section>
+<section id="despliegue-de-aplicaciones-php-con-almacenamiento-persistente">
+<h2>Despliegue de aplicaciones PHP con almacenamiento persistente<a class="headerlink" href="#despliegue-de-aplicaciones-php-con-almacenamiento-persistente" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En este ejemplo vamos a utilizar un volumen (almacenamiento persistente)
+para guardar las bases de datos de la aplicación (que están guardadas en
+el directorio /cms/data). Vamos a continuar trabajando donde lo dejamos
+en la unidad anterior. Estrategia de despliegue. En este momento tenemos
+instalado phpSQLiteCMS pero sin almacenamiento persistente. Para
+trabajar con almacenamiento persistente en el próximo paso vamos a crear
+un volumen, pero antes vamos a cambiar la estrategia de despliegue de la
+aplicación:</p>
+<ul class="simple">
+<li><p>Por defecto la estrategia es Rolling: En este caso se crean los nuevos</p></li>
+</ul>
+<p>pods de la nueva versión del despliegue se comprueban que funcionan y
+posteriormente se eliminan los pods de la versión anterior.</p>
+<ul class="simple">
+<li><p>Nosotros deseamos que la estrategia sea Recreate: En esta situación se</p></li>
+</ul>
+<p>eliminan los pods de la versión actual y posteriormente se crean los
+nuevos pods de la nueva versión. Si vamos a trabajar con volúmenes,
+necesitamos configurar este tipo de estrategia, ya que la primera nos da
+errores al intentar conectar el volumen a un nuevo pod cuando sigue
+conectado al anterior pod.</p>
+<p>Para cambiar la estrategia: Elegimos el despliegue de appphp y en el
+botón Actions elegimos la opción Edit:</p>
+<section id="creacion-del-volumen">
+<h3>Creación del volumen<a class="headerlink" href="#creacion-del-volumen" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>A continuación vamos a crear un nuevo volumen:</p>
+<p>Al crear el volumen tenemos que elegir entre varios medio de
+almacenamiento (Storage Class). Las posibilidades de medios de
+almacenamiento dependerán de la infraestructura donde está instalado
+OpenShift. Como medios de almacenamiento podemos tener: NFS, HostPath,
+GlusterFS, Ceph RBD, OpenStack Cinder, AWS Elastic Block Store (EBS),
+GCE Persistent Disk, iSCSI, Fibre Channel,… OpenShiftOnline está
+instalado en AWS por lo que tenemos dos medios de almacenamiento: ebs:
+Elastic Block Store que proporciona volúmenes de almacenamiento, y
+gp2-encrypted, similar al anterior pero la información está cifrada.
+Dependiendo del medio de almacenamiento que tenga nuestra
+infraestructura tendremos distintas formas de acceso a la información
+guardada en el volumen:</p>
+<ul class="simple">
+<li><p>ReadWriteOnce: lectura y escritura solo para un nodo (RWO)</p></li>
+<li><p>ReadOnlyMany: solo lectura para muchos nodos (ROX)</p></li>
+<li><p>ReadWriteMany: lectura y escritura para muchos nodos (RWX)</p></li>
+</ul>
+<p>Por ejemplo los volúmenes de tipo ebs no soportan el modo ReadWriteMany,
+por consecuencia, si tenemos un despliegue al que hemos conectado un
+volumen con tipo de acceso ReadWriteOnce, este despliegue no podrá
+replicarse, es decir no podemos tener varios pods replicados ya que no
+podríamos montar el volumen al mismo tiempo en los distintos pods. En la
+siguiente tabla podemos ver la relación entre los medios de
+almacenamiento y los tipos de acceso para cada uno de los proveedores
+cloud que soportan: En todos ellos al menos un pod podrá acceder al
+volumen, si esto no existe no podremos dar la posibilidad de
+elasticidad.</p>
+</section>
+<section id="anadir-el-volumen-a-un-despliegue">
+<h3>Añadir el volumen a un despliegue<a class="headerlink" href="#anadir-el-volumen-a-un-despliegue" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En el Pod que se está ejecutando tenemos el terminal, de ahí vemos que
+la ruta donde se almacenan los ficheros de SQLite son las siguientes:</p>
+<p>El volumen que hemos creado lo conectamos al despliegue appphp en el
+directorio /opt/app-root/src/cms/data: Elegimos el despliegue de appphp
+y en el botón Actions elegimos la opción Add Storage:</p>
+<p>En el momento que hemos añadido el almacenamiento a nuestra aplicación
+se produce un nuevo despliegue de forma automática que implantará la
+aplicación con el volumen persistente. En el directorio cms/data de
+phpSQLiteCMS se guardan las bases de datos sqltile de la aplicación. Por
+lo tanto es el directorio que necesitamos que este guardado en un
+volumen persistente. Pero al montar el volumen en el directorio
+indicado, hemos perdido su contenido, y al acceder a la aplicación nos
+da un error:</p>
+<p>Para solucionarlo vamos a copiar las bases de datos desde nuestro
+ordenador:</p>
+<p>He clonado el repositorio de phpsqlitecms en mi ordenador:
+<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/ilosuna/phpsqlitecms.git</span> <span class="pre">$</span> <span class="pre">cd</span> <span class="pre">phpsqlitecms/cms</span></code>
+Vamos a copiar el contenido de este directorio al volumen, para ello:
+``` $ oc get pods NAME READY STATUS RESTARTS AGE appphp-1-build 0/1
+Completed 0 12m appphp-2-tj5jm 1/1 Running 0 1m</p>
+<p>$ oc cp data appphp-2-tj5jm:cms/
+<code class="docutils literal notranslate"><span class="pre">Comprobamos</span> <span class="pre">que</span> <span class="pre">hemos</span> <span class="pre">copiado</span> <span class="pre">los</span> <span class="pre">ficheros:</span></code> $ oc exec appphp-2-tj5jm
+ls cms/data content.sqlite entries.sqlite userdata.sqlite ```</p>
+<p>Podemos concluir que cada vez que hagamos un nuevo despliegue se creara
+de nuevo el sistema de fichero de los contenedores, a excepción del
+directorio cms/data cuya información esta guardada en el volumen. Ya
+podemos acceder a nuestra aplicación. Para terminar el ejercicio podemos
+comprobar que las modificaciones que hacemos en la configuración de la
+página se mantienen cuando se borran los pods, por ejemplo al crear un
+nuevo despliegue.</p>
+<p>Despliegue de aplicaciones PHP en OpenShift con almacenamiento
+persistente Desde Openshift se pueden desplegar aplicaciones con
+distintas bases de datos:</p>
+<p>Desde línea de comandos Buscamos los templates relacionados con mysql</p>
+</section>
+<section id="creamos-la-bbdd">
+<h3>Creamos la BBDD<a class="headerlink" href="#creamos-la-bbdd" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Conecto con la BBDD y compruebo que se ha creado. Despliegue de una base
+de datos mysql sin almacenamiento persistente Lo primero que vamos a
+hacer es buscar en el catálogo los recursos que podemos desplegar
+relacionados con mysql:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc new-app --search mysql
+Templates (oc new-app --template=&lt;template&gt;)
+-----
+mysql-persistent
+...
+Image streams (oc new-app --image-stream=&lt;image-stream&gt; [--code=&lt;source&gt;])
+-----
+mysql
+...
+</pre></div>
+</div>
+<p>Como podemos observar podemos utilizar una imagen mysql sin
+almacenamiento persistente o un template mysql-persistent que nos ofrece
+almacenamiento persistente. Despliegue de una aplicación mysql sin
+almacenamiento persistente Para crear una aplicación mysql utilizamos la
+siguiente instrucción indicando algunas variables de entorno para la
+configuración del servidor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc new-app mysql -e MYSQL_USER=user MYSQL_PASSWORD=pass MYSQL_DATABASE=prueba --name mysql
+$ oc status
+In project miproyecto1 on server https://api.starter-us-west-2.openshift.com:443
+svc/mysql - 172.30.160.193:3306
+  dc/mysql deploys openshift/mysql:5.7
+    deployment #1 running for 9 seconds - 1 pod
+Podemos ver el pod que se ha creado y acceder a él para ejecutar el cliente mysql:
+$ oc get pods
+NAME            READY     STATUS    RESTARTS   AGE
+mysql-1-rr5kk   1/1       Running   0          13s
+$ oc rsh mysql-1-rr5kk
+sh-4.2$ mysql -u user -p
+Enter password:
+...
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| prueba             |
++--------------------+
+2 rows in set (0.02 sec)
+A continuación vamos a crear una tabla en la base de datos:
+mysql&gt; use prueba;
+Database changed
+mysql&gt; create table tabla_prueba(id INT);
+Query OK, 0 rows affected (0.06 sec)
+mysql&gt; show tables;
++------------------+
+| Tables_in_prueba |
++------------------+
+| tabla_prueba     |
++------------------+
+1 row in set (0.01 sec)
+¿Qué ocurre si se elimina el pod?
+$ oc delete pod/mysql-1-rr5kk
+pod "mysql-1-rr5kk" deleted
+$ oc get pods
+NAME            READY     STATUS    RESTARTS   AGE
+mysql-1-pr57f   1/1       Running   0          9s
+$ oc rsh mysql-1-pr57f
+sh-4.2$ mysql -u user -p
+Enter password:
+...
+mysql&gt; use prueba;
+Database changed
+mysql&gt; show tables;
+Empty set (0.00 sec)
+</pre></div>
+</div>
+<p>Como podemos ver se ha perdido la información de la base de datos, ya
+que estamos usando un pod sin un volumen de almacenamiento. Despliegue
+de una base de datos mysql con almacenamiento persistente En esta
+ocasión vamos a usar el template mysql-persistent, en un nuevo proyecto
+ejecutamos la siguiente instrucción:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc new-app mysql-persistent --param=MYSQL_USER=user --param=MYSQL_PASSWORD=pass --param=MYSQL_DATABASE=prueba --name mysql
+$ oc status
+In project miproyecto1 on server https://api.starter-us-west-2.openshift.com:443
+svc/mysql - 172.30.201.218:3306
+  dc/mysql deploys openshift/mysql:5.7
+    deployment #1 deployed about a minute ago - 1 pod
+Podemos ver el pod que se ha creado y acceder a él para ejecutar el cliente mysql:
+$ oc get pods
+NAME            READY     STATUS    RESTARTS   AGE
+mysql-1-wzqjl   1/1       Running   0          1m
+
+$ oc rsh mysql-1-wzqjl
+sh-4.2$ mysql -u user -p
+Enter password:
+...
+mysql&gt; use prueba;
+Database changed
+
+mysql&gt; create table tabla_prueba(id INT);
+Query OK, 0 rows affected (0.18 sec)
+mysql&gt; show tables;
++------------------+
+| Tables_in_prueba |
++------------------+
+| tabla_prueba     |
++------------------+
+1 row in set (0.00 sec)
+¿Qué ocurre si se elimina el pod?
+$ oc delete pod/mysql-1-wzqjl
+pod "mysql-1-wzqjl" deleted
+$ oc get pods
+NAME            READY     STATUS              RESTARTS   AGE
+mysql-1-jbqdb   0/1       ContainerCreating   0          15s
+
+$ oc rsh mysql-1-jbqdb
+sh-4.2$ mysql -u admin -p
+Enter password:
+...
+mysql&gt; use prueba;
+Database changed
+mysql&gt; show tables;
++------------------+
+| Tables_in_prueba |
++------------------+
+| tabla_prueba     |
++------------------+
+1 row in set (0.00 sec)
+Como podemos ver en esta ocasión no se ha perdido la información de la base de datos, ya que estamos utilizando un volumen para guardar la información que no queremos perder.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="despliegue-de-aplicacion-wordpress">
+<h2>Despliegue de aplicación WordPress<a class="headerlink" href="#despliegue-de-aplicacion-wordpress" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En esta unidad vamos a instalar WordPress, un CMS escrito en PHP, en
+OpenShift aplicando todos los conocimientos que hemos estudiado en
+unidades anteriores:</p>
+<section id="creacion-de-la-base-de-datos">
+<h3>Creación de la base de datos<a class="headerlink" href="#creacion-de-la-base-de-datos" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Vamos a crear un nuevo proyecto y en ella vamos a crear una aplicación
+con la base de datos mysql. Para ellos escogemos en el catálogo la
+imagen de mysql e indicamos las variables para su creación:</p>
+</section>
+<section id="despliegue-de-wordpress">
+<h3>Despliegue de WordPress<a class="headerlink" href="#despliegue-de-wordpress" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>A continuación vamos a crear una aplicación PHP con el despliegue de
+WordPress para ello vamos a utilizar el repositorio oficial de la
+aplicación: <a class="reference external" href="https://github.com/WordPress/WordPress">https://github.com/WordPress/WordPress</a>:</p>
+<p>A continuación, antes de trabajar con el volumen, y como explicábamos en
+unidades anteriores vamos a cambiar la estrategia de despliegue, para
+ello elegimos el despliegue de wordpress y en el botón Actions elegimos
+la opción Edit:</p>
+</section>
+<section id="creacion-del-volumen-1">
+<span id="id2"></span><h3>Creación del volumen<a class="headerlink" href="#creacion-del-volumen-1" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>A continuación vamos a crear un nuevo volumen: Y lo conectamos al
+despliegue wordpress en el directorio /opt/app-root/src/wp-content:
+Elegimos el despliegue de wordpress y en el botón Actions elegimos la
+opción Add Storage: En el momento que hemos añadido el almacenamiento a
+nuestra aplicación se produce un nuevo despliegue de forma automática
+que implantará la aplicación con el volumen persistente. En el
+directorio wp-content de WordPress se guardada todos los datos de la
+aplicación (documentos que subimos, plugins, temas,…). Por lo tanto es
+el directorio que necesitamos que este guardado en un volumen
+persistente. Pero al montar el volumen en el directorio indicado, hemos
+perdido su contenido, por lo que vamos a copiarlo desde nuestro
+ordenador: • He clonado el repositorio de WordPress en mi ordenador:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/WordPress/WordPress
+$ cd WordPress
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Vamos a copiar el contenido de este directorio al volumen, para ello:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc get pods
+        NAME                READY     STATUS      RESTARTS   AGE
+        mysql-1-r9vjk       1/1       Running     0          22m
+        wordpress-1-build   0/1       Completed   0          20m
+        wordpress-2-dsgnr   1/1       Running     0          2m
+
+        $ oc cp wp-content wordpress-2-dsgnr:/opt/app-root/src/
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Comprobamos que hemos copiado los ficheros:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc exec wordpress-2-dsgnr ls wp-content
+        index.php
+        plugins
+        themes
+</pre></div>
+</div>
+<p>Podemos concluir que cada vez que hagamos un nuevo despliegue se creara
+de nuevo el sistema de fichero de los contenedores, a excepción del
+directorio wp-content cuya información esta guardada en el volumen.
+Seguimos teniendo un problema: el fichero wp-config.php donde se guarda
+la configuración de WordPress se perderá cada vez que hacemos un
+despliegue. Para solucionarlo, vamos a copiar al volumen persistente dos
+ficheros: 1. Un fichero wp-config.php con la configuración de wordpress
+con los datos para el acceso a la base de datos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ficheros
+$ oc cp wp-config.php wordpress-2-dsgnr:/opt/app-root/src/wp-content
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Un fichero run.sh que vamos a ejecutar cada vez que hagamos un nuevo
+despliegue y va a crear un enlace simbólico al fichero de
+configuración que tenemos guardado:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc cp run.sh wordpress-2-dsgnr:/opt/app-root/src/wp-content
+El contenido del fichero run.sh es:
+#!/bin/bash
+ln -s /opt/app-root/src/wp-content/wp-config.php /opt/app-root/src/wp-config.php
+exec /usr/libexec/s2i/run
+</pre></div>
+</div>
+<p>Y tenemos que darle permiso de ejecución:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc exec wordpress-2-dsgnr chmod +x wp-content/run.sh
+</pre></div>
+</div>
+<p>Ejecutando un comando en el despliegue Como hemos indicado anteriormente
+cada vez que hagamos un despliegue tenemos que ejecutar el script
+anterior para que se cree el enlace directo al fichero wp-config.php,
+para ello elegimos el despliegue de wordpress y en el botón Actions
+elegimos la opción Edit YAML y vamos a añadir la sección command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spec</span><span class="p">:</span>
+  <span class="n">containers</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">image</span><span class="p">:</span> <span class="o">&gt;-</span>
+        <span class="mf">172.30.254.23</span><span class="p">:</span><span class="mi">5000</span><span class="o">/</span><span class="n">proyecto</span><span class="o">-</span><span class="n">wordpress</span><span class="o">/</span><span class="n">wordpress</span><span class="nd">@sha256</span><span class="p">:</span><span class="mi">7458214</span><span class="n">fb3da2a6deec8fa13dbdf8af42b09a75e98735937bf67f6da72adb468</span>
+      <span class="n">imagePullPolicy</span><span class="p">:</span> <span class="n">Always</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">wordpress</span>
+      <span class="n">command</span><span class="p">:</span>
+        <span class="o">-</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">app</span><span class="o">-</span><span class="n">root</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">wp</span><span class="o">-</span><span class="n">content</span><span class="o">/</span><span class="n">run</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>En el momento que hemos modificado la configuración a nuestra aplicación
+se produce un nuevo despliegue de forma automática que implantará la
+modificación indicada.</p>
+</section>
+</section>
+<section id="despliegue-de-wordpress-1">
+<span id="id3"></span><h2>Despliegue de WordPress<a class="headerlink" href="#despliegue-de-wordpress-1" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para concluir accedemos a la URL de nuestra aplicación y terminamos de
+configurar la instalación de WordPress (como podemos observar se ha
+saltado el paso donde nos preguntan por las credenciales de la base de
+datos, ya que hemos indicado un fichero wp-config.php con la
+configuración). Despliegue de aplicación wordpress con template En la
+unidad anterior, hemos detallamos los pasos necesarios para crear una
+instancia de WordPress creando todos los recursos paso a paso en
+openShift. En esta última unidad, le mostraremos una forma mucho más
+fácil de instalar y ejecutar una nueva instancia de WordPress en
+OpenShift utilizando una plantilla y una imagen personalizada de
+WordPress. Una plantilla describe un conjunto de objetos que se pueden
+parametrizar y procesar para desplegar de forma automática los recursos
+necesarios en OpenShift. en nuestro caso vamos a utilizar un template
+que de forma automática crea la aplicación WordPress, la aplicación
+mysql, los volúmenes necesarios para que la información sea persistente,
+…</p>
+</section>
+<section id="creacion-del-template">
+<h2>Creación del template<a class="headerlink" href="#creacion-del-template" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El template que vamos a utilizar lo puedes encontrar en el repositorio
+GitHub: <a class="reference external" href="https://github.com/openshift-evangelists/wordpress-quickstart">https://github.com/openshift-evangelists/wordpress-quickstart</a>.
+Lo primero que tenemos que hacer es crear el recurso template en nuestro
+proyecto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ oc create -f https://raw.githubusercontent.com/openshift-evangelists/wordpress-quickstart/master/templates/classic-standalone.json
+</pre></div>
+</div>
+<p>A continuación si examinamos el catálogo de aplicaciones, veremos una
+nueva opción: WordPress (Classic / Standalone). Si lo elegimos podremos
+indicar los parámetros de configuración de nuestras aplicaciones: mysql
+y wordpress. Como podemos comprobar se han creado las dos aplicaciones,
+Se han creado los dos volúmenes Y finalmente podemos acceder a nuestro
+wordpress accediendo a la ruta de la aplicación</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="5-readme.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Docker-compose y Docker Swarm</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="3-readme.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">KUBERNETES</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, jclmon |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>. |
+            <a class="muted-link" href="../_sources/usage/4-readme.rst.txt"
+               rel="nofollow">
+              Mostrar el código
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contenidos
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">OPENSHIFT</a><ul>
+<li><a class="reference internal" href="#creando-el-cluster-openshift">Creando el cluster openshift</a></li>
+<li><a class="reference internal" href="#gestionando-el-cluster-openshift">Gestionando el cluster openshift</a><ul>
+<li><a class="reference internal" href="#para-detener-la-maquina-virtual-que-hemos-creado">Para detener la máquina virtual que hemos creado:</a></li>
+<li><a class="reference internal" href="#en-cualquier-otro-momento-podemos-seguir-trabajando-con-el-cluster">En cualquier otro momento podemos seguir trabajando con el cluster:</a></li>
+<li><a class="reference internal" href="#para-borrar-la-maquina-virtual">Para borrar la máquina virtual:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#despliegue-de-la-primera-aplicacion-en-openshift">Despliegue de la primera aplicación en Openshift</a><ul>
+<li><a class="reference internal" href="#pasos-a-seguir">Pasos a seguir</a></li>
+<li><a class="reference internal" href="#recursos-que-nos-ofrece-openshift">Recursos que nos ofrece Openshift</a></li>
+<li><a class="reference internal" href="#tolerancia-a-fallos-y-balanceo-de-carga">Tolerancia a fallos y balanceo de carga</a></li>
+<li><a class="reference internal" href="#escalabilidad">Escalabilidad</a></li>
+<li><a class="reference internal" href="#balanceo-de-carga">Balanceo de carga</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#despliegue-continuo-y-rollback-de-nuestra-aplicacion-openshift">Despliegue continuo y rollback de nuestra aplicación Openshift</a><ul>
+<li><a class="reference internal" href="#despliegue-continuo-en-openshift">Despliegue continuo en Openshift</a></li>
+<li><a class="reference internal" href="#autoescalado-escalado-automatico-en-openshift">Autoescalado, escalado automático en Openshift</a></li>
+<li><a class="reference internal" href="#autoescalado-de-un-despliegue">Autoescalado de un despliegue</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#introduccion-a-la-linea-de-comandos">Introducción a la línea de comandos</a><ul>
+<li><a class="reference internal" href="#despliegue-de-una-aplicacion-con-oc">Despliegue de una aplicación con OC</a></li>
+<li><a class="reference internal" href="#escalabilidad-1">Escalabilidad</a></li>
+<li><a class="reference internal" href="#actualizaciones-continuas">Actualizaciones continúas</a></li>
+<li><a class="reference internal" href="#autoescalado">Autoescalado</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#despliegue-de-aplicaciones-python-con-oc">Despliegue de aplicaciones Python con OC</a></li>
+<li><a class="reference internal" href="#despliegue-de-aplicaciones-php-con-almacenamiento-persistente">Despliegue de aplicaciones PHP con almacenamiento persistente</a><ul>
+<li><a class="reference internal" href="#creacion-del-volumen">Creación del volumen</a></li>
+<li><a class="reference internal" href="#anadir-el-volumen-a-un-despliegue">Añadir el volumen a un despliegue</a></li>
+<li><a class="reference internal" href="#creamos-la-bbdd">Creamos la BBDD</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#despliegue-de-aplicacion-wordpress">Despliegue de aplicación WordPress</a><ul>
+<li><a class="reference internal" href="#creacion-de-la-base-de-datos">Creación de la base de datos</a></li>
+<li><a class="reference internal" href="#despliegue-de-wordpress">Despliegue de WordPress</a></li>
+<li><a class="reference internal" href="#creacion-del-volumen-1">Creación del volumen</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#despliegue-de-wordpress-1">Despliegue de WordPress</a></li>
+<li><a class="reference internal" href="#creacion-del-template">Creación del template</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/main.js"></script>
+    <script src="../_static/translations.js"></script>
+    </body>
+</html>
